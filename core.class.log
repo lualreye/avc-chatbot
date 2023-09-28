@@ -1,0 +1,58 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '593995076954@s.whatsapp.net',
+    fromMe: false,
+    id: '4CEF3FE9E11E03B3D96DB1FDC9232305',
+    participant: undefined
+  },
+  messageTimestamp: 1695900816,
+  pushName: 'Ohayo',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'Hola',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  verifiedBizName: 'Ohayo',
+  body: 'Hola',
+  from: '593995076954'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_cb1063bf-5deb-4671-91d1-1a4e0b2c64f8',
+  keyword: 'key_5971b91f-d3cc-469b-9ad5-5926bd75e06e',
+  answer: '🙌 Hola bienvenido al AVC *Chatbot*',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '60835b8263c3639bdae2a4f27375fa60'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_6bbba4c4-705e-4e74-8c37-0881459bbbb6',
+  keyword: 'ans_cb1063bf-5deb-4671-91d1-1a4e0b2c64f8',
+  answer: '¿Cómo podemos ayudarte el día de hoy?',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: 'db1135927a5be5232ee1c731f1389367'
+}
