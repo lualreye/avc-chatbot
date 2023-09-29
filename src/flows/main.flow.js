@@ -15,29 +15,32 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
         {
             capture: true
         },
-        async (ctx, { state, gotoFlow, fallBack, flowDynamic }) => {
+        async (ctx, ctxFn) => {
             try {
-                // const { state } = ctxFn;
-                // const entryMessage = ctx.body;
-                // const plugin = ctxFn.extensions.employeesAddon;
-                // console.log(plugin)
-                // const idealEmployee = await plugin.determine(entryMessage);
-
+                const { state } = ctxFn;
                 const entryMessage = ctx.body;
+                const plugin = ctxFn.extensions.employeesAddon;
+                console.log(plugin)
+                const idealEmployee = await plugin.determine(entryMessage);
 
-                console.log(entryMessage)
+                state.update({idealEmployee})
 
-                if (entryMessage !== 'informacion' && entryMessage !== 'desuscripcion') {
-                    return fallBack('Lo siento no he entendido. ¿Cómo puedo ayudarte?')
-                }
+                console.log(idealEmployee)
+                // const entryMessage = ctx.body;
 
-                if (entryMessage === 'desuscripcion') {
-                    return gotoFlow(subscriptionFlow)
-                }
+                // console.log(entryMessage)
 
-                if (entryMessage === 'informacion') {
-                    return gotoFlow(informationFlow)
-                }
+                // if (entryMessage !== 'informacion' && entryMessage !== 'desuscripcion') {
+                //     return fallBack('Lo siento no he entendido. ¿Cómo puedo ayudarte?')
+                // }
+
+                // if (entryMessage === 'desuscripcion') {
+                //     return gotoFlow(subscriptionFlow)
+                // }
+
+                // if (entryMessage === 'informacion') {
+                //     return gotoFlow(informationFlow)
+                // }
             } catch (error) {
                 console.log('error', error)
             }

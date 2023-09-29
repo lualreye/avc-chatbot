@@ -1,29 +1,30 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '593980574500@s.whatsapp.net',
+    remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3A06D0DD618E9978A1FE',
+    id: '3EB038B8B1146A110283A7',
     participant: undefined
   },
-  messageTimestamp: 1695949328,
-  pushName: 'Fiorella Drouet💗',
+  messageTimestamp: 1695989169,
+  pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'pos jhons express',
-      contextInfo: [ContextInfo]
+      text: 'hola',
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
     },
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'pos jhons express',
-  from: '593980574500'
+  body: 'hola',
+  from: '593960952970'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8979ea6f-85fd-4cf8-a39a-be4263a22f44',
-  keyword: 'key_7474dc12-a61d-457c-b816-6efc65a90041',
+  ref: 'ans_daa61ada-8166-4459-aeda-1bd48a8c5b13',
+  keyword: 'key_e99412db-8e25-4884-82af-fddfc01f3dab',
   answer: 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?',
   options: {
     media: null,
@@ -35,11 +36,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '9add505e47f603ccf921fa4b133c3aa1'
+  refSerialize: 'e3d7939f3d17f8efca60d82fced927cb'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_d598f4a1-0d0b-48db-9c89-60225f81416a',
-  keyword: 'ans_8979ea6f-85fd-4cf8-a39a-be4263a22f44',
+  ref: 'ans_079b6efa-a2ac-4c1c-b6f0-b0c0c4374f9e',
+  keyword: 'ans_daa61ada-8166-4459-aeda-1bd48a8c5b13',
   answer: '¿Cuéntanos por qué nos escribes?\n1. Información\n2. Desuscribirse',
   options: {
     media: null,
@@ -51,21 +52,21 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'bf4dca6e4e5846887d39fed97cf27e30'
+  refSerialize: 'be0dee816ca9b50052958e7ade7d576a'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB00F9FFD7EEC83C3B7DB',
+    id: '3EB0F00DD025AAB02E4F53',
     participant: undefined
   },
-  messageTimestamp: 1695949334,
+  messageTimestamp: 1695989178,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'hello',
+      text: 'quiero información',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -74,145 +75,6 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'hello',
+  body: 'quiero información',
   from: '593960952970'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8979ea6f-85fd-4cf8-a39a-be4263a22f44',
-  keyword: 'key_7474dc12-a61d-457c-b816-6efc65a90041',
-  answer: 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: false
-  },
-  refSerialize: '9add505e47f603ccf921fa4b133c3aa1'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_d598f4a1-0d0b-48db-9c89-60225f81416a',
-  keyword: 'ans_8979ea6f-85fd-4cf8-a39a-be4263a22f44',
-  answer: '¿Cuéntanos por qué nos escribes?\n1. Información\n2. Desuscribirse',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [ [Object], [Object], [Object], [Object] ],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'bf4dca6e4e5846887d39fed97cf27e30'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593980574500@s.whatsapp.net',
-    fromMe: false,
-    id: '3A4303C0021B8B35FCD6',
-    participant: undefined
-  },
-  messageTimestamp: 1695949340,
-  pushName: 'Fiorella Drouet💗',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage { text: '1', contextInfo: [ContextInfo] },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '1',
-  from: '593980574500'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593960952970@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB0D7BA4E9D1B4B54BA3C',
-    participant: undefined
-  },
-  messageTimestamp: 1695949342,
-  pushName: 'Luis Reyes',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'informacion',
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'informacion',
-  from: '593960952970'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593980574500@s.whatsapp.net',
-    fromMe: false,
-    id: '3A971FB24D0850439466',
-    participant: undefined
-  },
-  messageTimestamp: 1695949360,
-  pushName: 'Fiorella Drouet💗',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage { text: 'nu):', contextInfo: [ContextInfo] },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'nu):',
-  from: '593980574500'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593980574500@s.whatsapp.net',
-    fromMe: false,
-    id: '3A4BC73C338B550B5B55',
-    participant: undefined
-  },
-  messageTimestamp: 1695949373,
-  pushName: 'Fiorella Drouet💗',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'esta con la salsa de ajus',
-      contextInfo: [ContextInfo]
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'esta con la salsa de ajus',
-  from: '593980574500'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593980574500@s.whatsapp.net',
-    fromMe: false,
-    id: '3AD2DA3D9AF22213A6C6',
-    participant: undefined
-  },
-  messageTimestamp: 1695949377,
-  pushName: 'Fiorella Drouet💗',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage { text: 'ajo*', contextInfo: [ContextInfo] },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'ajo*',
-  from: '593980574500'
 }
