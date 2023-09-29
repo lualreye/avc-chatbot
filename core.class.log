@@ -2,15 +2,15 @@
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB068B314E171B293760A',
+    id: '3EB0AD53DBFD54E6A03C25',
     participant: undefined
   },
-  messageTimestamp: 1695994072,
+  messageTimestamp: 1696018941,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'Buenos dias',
+      text: 'hola',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -19,12 +19,12 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Buenos dias',
+  body: 'hola',
   from: '593960952970'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_395f842d-aacc-4562-a8a4-13a8fcd942c4',
-  keyword: 'key_2ba746a1-5156-4fce-aafb-6c80fbb8a96e',
+  ref: 'ans_47bc4b6e-5c35-4d89-96e1-ddc74d3ba27b',
+  keyword: 'key_598045f6-9fc4-4235-9d87-e110dde3001e',
   answer: 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?',
   options: {
     media: null,
@@ -36,11 +36,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '1972c77b7f006c624bc65d1ed7df1aa7'
+  refSerialize: '67d6b1c1144026f201d3b34fd036055e'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_415dccd9-7d03-4d63-84cf-cc480c22268a',
-  keyword: 'ans_395f842d-aacc-4562-a8a4-13a8fcd942c4',
+  ref: 'ans_a2943483-43f7-4704-bdbf-3e46d503fcd6',
+  keyword: 'ans_47bc4b6e-5c35-4d89-96e1-ddc74d3ba27b',
   answer: '¿Cuéntanos por qué nos escribes?\n1. Información\n2. Desuscribirse',
   options: {
     media: null,
@@ -57,21 +57,21 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '7f27b63f6fe4f693d49866c63afd1968'
+  refSerialize: '22f1103fea8f7b27ef262bc91751da65'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0D7218CF18A7541D4B3',
+    id: '3EB080C3747C30AEE08A40',
     participant: undefined
   },
-  messageTimestamp: 1695994083,
+  messageTimestamp: 1696018956,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'ya no quiero continuar con mi suscripción',
+      text: 'quiero cortar el servicio',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -80,6 +80,151 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'ya no quiero continuar con mi suscripción',
+  body: 'quiero cortar el servicio',
   from: '593960952970'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '593960952970@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0F644D250585FF6CB09',
+    participant: undefined
+  },
+  messageTimestamp: 1696018961,
+  pushName: 'Luis Reyes',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'lualreye@gmail.com',
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'lualreye@gmail.com',
+  from: '593960952970'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_56ddbce2-d34f-4eae-82ac-bb5baa656083',
+  keyword: 'ans_c9ab7817-59d1-45ba-838a-b1b92b3556ff',
+  answer: 'Nos indicas el motivo por el que cancelas la suscripción 😢',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '1d0e4dfee27fc1c5ab1fb93897f25bbb'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '593960952970@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0BFC034BBB4C4416675',
+    participant: undefined
+  },
+  messageTimestamp: 1696018966,
+  pushName: 'Luis Reyes',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'estoy molesto',
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'estoy molesto',
+  from: '593960952970'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_31f3a49a-2868-45c1-9b83-874b1ff05282',
+  keyword: 'ans_56ddbce2-d34f-4eae-82ac-bb5baa656083',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '6338df4f2b48bc254cf87fb6a3779c3a'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_1475a883-f8d3-4b4c-8872-5c71bf00d566',
+  keyword: 'ans_31f3a49a-2868-45c1-9b83-874b1ff05282',
+  answer: 'Por favor, guarda tu número solicitud',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '0ca547f5d2237076d64bc23d43c302fc'
+}
+Error al encolar: undefined
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_31f3a49a-2868-45c1-9b83-874b1ff05282',
+  keyword: 'ans_56ddbce2-d34f-4eae-82ac-bb5baa656083',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '6338df4f2b48bc254cf87fb6a3779c3a'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '593982160124@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0B424E3FD5EDF22C0E5',
+    participant: undefined
+  },
+  messageTimestamp: 1696019474,
+  pushName: 'Ecuabet AGENCIA',
+  broadcast: false,
+  message: Message {
+    stickerMessage: StickerMessage {
+      url: 'https://web.whatsapp.net',
+      fileSha256: [Uint8Array],
+      fileEncSha256: [Uint8Array],
+      mediaKey: [Uint8Array],
+      mimetype: 'image/webp',
+      directPath: '/v/t62.15575-24/32040394_143141722154781_3440053319693083748_n.enc?ccb=11-4&oh=01_AdSDC_r_5QmXHAF17qYhCb8DwNAPttAmodfBefHz6eTUiQ&oe=653EBE73&_nc_sid=000000',
+      fileLength: [Long],
+      mediaKeyTimestamp: [Long],
+      isAnimated: false,
+      contextInfo: [ContextInfo],
+      stickerSentTs: [Long]
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '',
+  from: '593982160124'
 }

@@ -31,8 +31,6 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
                     ],)
                 }
 
-                console.log(idealEmployee)
-
                 state.update({ idealEmployee })
 
                 plugin.gotoFlow(idealEmployee.employee, ctxFn)
