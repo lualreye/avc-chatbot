@@ -25,22 +25,6 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
 
                 state.update({idealEmployee})
 
-                console.log(idealEmployee)
-                // const entryMessage = ctx.body;
-
-                // console.log(entryMessage)
-
-                // if (entryMessage !== 'informacion' && entryMessage !== 'desuscripcion') {
-                //     return fallBack('Lo siento no he entendido. ¿Cómo puedo ayudarte?')
-                // }
-
-                // if (entryMessage === 'desuscripcion') {
-                //     return gotoFlow(subscriptionFlow)
-                // }
-
-                // if (entryMessage === 'informacion') {
-                //     return gotoFlow(informationFlow)
-                // }
             } catch (error) {
                 console.log('error', error)
             }
