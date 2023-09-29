@@ -2,15 +2,15 @@
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB038B8B1146A110283A7',
+    id: '3EB068B314E171B293760A',
     participant: undefined
   },
-  messageTimestamp: 1695989169,
+  messageTimestamp: 1695994072,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'hola',
+      text: 'Buenos dias',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -19,12 +19,12 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'hola',
+  body: 'Buenos dias',
   from: '593960952970'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_daa61ada-8166-4459-aeda-1bd48a8c5b13',
-  keyword: 'key_e99412db-8e25-4884-82af-fddfc01f3dab',
+  ref: 'ans_395f842d-aacc-4562-a8a4-13a8fcd942c4',
+  keyword: 'key_2ba746a1-5156-4fce-aafb-6c80fbb8a96e',
   answer: 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?',
   options: {
     media: null,
@@ -36,11 +36,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: 'e3d7939f3d17f8efca60d82fced927cb'
+  refSerialize: '1972c77b7f006c624bc65d1ed7df1aa7'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_079b6efa-a2ac-4c1c-b6f0-b0c0c4374f9e',
-  keyword: 'ans_daa61ada-8166-4459-aeda-1bd48a8c5b13',
+  ref: 'ans_415dccd9-7d03-4d63-84cf-cc480c22268a',
+  keyword: 'ans_395f842d-aacc-4562-a8a4-13a8fcd942c4',
   answer: '¿Cuéntanos por qué nos escribes?\n1. Información\n2. Desuscribirse',
   options: {
     media: null,
@@ -48,25 +48,30 @@
     capture: true,
     child: null,
     delay: 0,
-    nested: [ [Object], [Object], [Object], [Object] ],
+    nested: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object]
+    ],
     keyword: {},
     callback: true
   },
-  refSerialize: 'be0dee816ca9b50052958e7ade7d576a'
+  refSerialize: '7f27b63f6fe4f693d49866c63afd1968'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0F00DD025AAB02E4F53',
+    id: '3EB0D7218CF18A7541D4B3',
     participant: undefined
   },
-  messageTimestamp: 1695989178,
+  messageTimestamp: 1695994083,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'quiero información',
+      text: 'ya no quiero continuar con mi suscripción',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -75,6 +80,6 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'quiero información',
+  body: 'ya no quiero continuar con mi suscripción',
   from: '593960952970'
 }

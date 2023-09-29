@@ -20,10 +20,22 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
                 const { state } = ctxFn;
                 const entryMessage = ctx.body;
                 const plugin = ctxFn.extensions.employeesAddon;
-                console.log(plugin)
                 const idealEmployee = await plugin.determine(entryMessage);
 
-                state.update({idealEmployee})
+                if (!idealEmployee?.employee) {
+                    return ctxFn.flowDynamic([
+                        'Lo siento no he podido entenderte',
+                        '¿Qué deseas hacer?',
+                        '1. Información',
+                        '2. Desuscribirse'
+                    ],)
+                }
+
+                console.log(idealEmployee)
+
+                state.update({ idealEmployee })
+
+                plugin.gotoFlow(idealEmployee.employee, ctxFn)
 
             } catch (error) {
                 console.log('error', error)

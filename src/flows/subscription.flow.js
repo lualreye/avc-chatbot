@@ -1,9 +1,11 @@
-const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
+const { addKeyword } = require("@bot-whatsapp/bot");
 
-const subscriptionFlow = addKeyword(EVENTS.ACTION)
-  .addAction(async (_, { state, flowDynamic }) => {
-    const currentState = state.getMyState();
-    return flowDynamic('Hola soy el encargado de darle de baja a tu suscripcion', currentState)
-  })
+const { subscriptionKeywords } = require("../utils/subscription.keywords");
+
+const subscriptionFlow = addKeyword(subscriptionKeywords)
+  .addAnswer('Puedes ayudarme con tu correo electrónico o número solicitud')
+  .addAnswer(
+    'Perfecto, estamos buscando en nuestra base de datos'
+  )
 
 module.exports = subscriptionFlow;

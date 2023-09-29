@@ -5,6 +5,10 @@ const subscriptionKeywords = [
   'no quiero pagar',
   'desuscribir',
   'desuscribirme',
+  '2',
+  '2.',
+  'desuscribirse',
+  'quiero quitar mi suscripcion'
 ]
 
 const informationKeywords = [
@@ -12,6 +16,10 @@ const informationKeywords = [
   'como va mi proceso',
   'cuando se da de baja mi suscripcion',
   'cuanto falta para completar el request',
+  '1',
+  '1.',
+  'informacion',
+  'quiero informacion'
 ]
 
 module.exports = {
