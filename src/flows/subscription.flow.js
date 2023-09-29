@@ -4,6 +4,7 @@ const { addKeyword } = require("@bot-whatsapp/bot");
 
 const { subscriptionKeywords } = require("../utils/subscription.keywords");
 const { isEmail } = require('../utils/emailValidator')
+const { formatDate } = require('../utils/formatDate.js')
 const GoogleSheetService = require('../services/gcpSheets');
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
@@ -58,7 +59,6 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         const data = state.getMyState();
   
         const currentDate = new Date()
-        const formattedCurrentDate = currentDate.slice(0, 11);
 
         const submitCurrentDate = new Date(currentDate);
         submitCurrentDate.setDate(currentDate.getDate() + 30);
@@ -69,8 +69,8 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
           user: data.user,
           reason: data.reason,
           code: code,
-          requestDate: formattedCurrentDate,
-          unsubscribeDate: submitCurrentDate,
+          requestDate: formatDate(currentDate),
+          unsubscribeDate: formatDate(submitCurrentDate),
         }
   
         await googleSheet.saveRequest(request);

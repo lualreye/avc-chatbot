@@ -52,9 +52,7 @@ class GoogleSheetService {
    * @param {*} data
    */
   saveRequest = async (data = {}) => {
-    console.log(data)
     await this.doc.loadInfo();
-    console.log(this.doc)
     const sheet = this.doc.sheetsByIndex[0]; // the first sheet
 
     const order = await sheet.addRow({
