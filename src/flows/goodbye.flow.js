@@ -1,4 +1,4 @@
-const { addKeyword } = require("@bot-whatsapp/bot");
+const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
 const goodbye = addKeyword(EVENTS.ACTION)
   .addAnswer('Si te puedo ayudar en algo más no dudes de escribirme')

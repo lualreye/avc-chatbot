@@ -13,7 +13,7 @@ const informationFlow = addKeyword(informationKeywords)
     {
       capture: true
     },
-    async (ctx, { state, fallBack, flowDynamic, endFlow, gotoFlow }) => {
+    async (ctx, { state, fallBack, flowDynamic, gotoFlow }) => {
       const text = ctx.body;
       const currentState = state.getMyState();
       const fallBackCode = currentState?.fallBackCode ?? 0;
