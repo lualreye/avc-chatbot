@@ -6,7 +6,7 @@ const router = express.Router()
 
 
 const chatWootHook = async (req, res) => {
-  const wsProvider = this.wsProvider;
+  const wsProvider = req.wsProvider;
   const body = req.body;
 
   if (body?.private) {
