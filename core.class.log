@@ -2,15 +2,15 @@
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB090A39CC535AFC52186',
+    id: '3EB093782823A2F9C95695',
     participant: undefined
   },
-  messageTimestamp: 1696020062,
+  messageTimestamp: 1696054483,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'hola',
+      text: 'hey',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -19,12 +19,12 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'hola',
+  body: 'hey',
   from: '593960952970'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e07a82c1-ffcd-4f71-8053-002c2a2f4adb',
-  keyword: 'key_2bfe1ec6-b449-46df-8e56-b9822951fe43',
+  ref: 'ans_a49910d2-c31a-42d0-9505-7cd6e59ac050',
+  keyword: 'key_024e90c8-ea66-4225-b6bd-7e67b5ecf71a',
   answer: 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?',
   options: {
     media: null,
@@ -36,11 +36,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '485226c30e9044c36be7c60ef8ff2531'
+  refSerialize: 'a4cbf953bfe834a6eb0a1e2221565f91'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_667b74cb-bb91-447f-bb93-7f71f1631935',
-  keyword: 'ans_e07a82c1-ffcd-4f71-8053-002c2a2f4adb',
+  ref: 'ans_73cf201d-9b23-4511-98c7-faa813e96131',
+  keyword: 'ans_a49910d2-c31a-42d0-9505-7cd6e59ac050',
   answer: '¿Cuéntanos por qué nos escribes?\n1. Información\n2. Desuscribirse',
   options: {
     media: null,
@@ -52,26 +52,26 @@
       [Object], [Object],
       [Object], [Object],
       [Object], [Object],
-      [Object], [Object]
+      [Object]
     ],
     keyword: {},
     callback: true
   },
-  refSerialize: '104fa15d359c4d9689905c66f32f4dc8'
+  refSerialize: '8918fe1eb0efd3cebfca8b2473ceb9f0'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0C4AD25D8B0D4905F61',
+    id: '3EB0B0982905BAED87707C',
     participant: undefined
   },
-  messageTimestamp: 1696020066,
+  messageTimestamp: 1696054488,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'quiero desuscribirme',
+      text: 'quiero info',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -80,40 +80,22 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'quiero desuscribirme',
+  body: 'quiero info',
   from: '593960952970'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_bd2c4935-baac-4ec7-ab71-bfaaa0020159',
-  keyword: 'key_71aa5651-1069-46ca-b009-34bbc206c6a5',
-  answer: 'Para proceder con la baja de suscripción, necesitamos:\n' +
-    'El Correo Electrónico que usaste en mercado Pago\n' +
-    'ó puede darnos tu nombre y apellido',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '8ea6b445b0f94cc57240e10f818c707e'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB08F69B47BE6588AB1C8',
+    id: '3EB0607028524BBB2A6B1F',
     participant: undefined
   },
-  messageTimestamp: 1696020074,
+  messageTimestamp: 1696054493,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'lualreye@gmail.com',
+      text: 'N-1696020081864',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -122,38 +104,22 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'lualreye@gmail.com',
+  body: 'N-1696020081864',
   from: '593960952970'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8c884a8e-200d-4b15-8f9b-03800edc4bc7',
-  keyword: 'ans_bd2c4935-baac-4ec7-ab71-bfaaa0020159',
-  answer: 'Nos indicas el motivo por el que cancelas la suscripción 😢',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'eb25a1371f6d52b174b600cf4d3cc31b'
 }
 [handleMsg]:  {
   key: {
     remoteJid: '593960952970@s.whatsapp.net',
     fromMe: false,
-    id: '3EB02D686535CA75A6E413',
+    id: '3EB0D0620464719677856F',
     participant: undefined
   },
-  messageTimestamp: 1696020081,
+  messageTimestamp: 1696054503,
   pushName: 'Luis Reyes',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'no me gusto',
+      text: 'salioooooooo',
       contextInfo: [ContextInfo],
       inviteLinkGroupTypeV2: 0
     },
@@ -162,152 +128,12 @@
       deviceListMetadataVersion: 2
     }
   },
-  body: 'no me gusto',
+  body: 'salioooooooo',
   from: '593960952970'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2cb41cba-73af-4e77-ad4f-910c03f4d575',
-  keyword: 'ans_8c884a8e-200d-4b15-8f9b-03800edc4bc7',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '72bf07230892d118109b89b5ba0cfc68'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_3a47f2dc-f3a3-4489-a8a6-a0263ba6b3c4',
-  keyword: 'ans_2cb41cba-73af-4e77-ad4f-910c03f4d575',
-  answer: '_Por favor, guarda tu número solicitud_',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '2f7c12b52fe8505a640772ac1f08e276'
-}
-Error al encolar: undefined
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2cb41cba-73af-4e77-ad4f-910c03f4d575',
-  keyword: 'ans_8c884a8e-200d-4b15-8f9b-03800edc4bc7',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '72bf07230892d118109b89b5ba0cfc68'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593982160124@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB0439EB961B395CAE232',
-    participant: undefined
-  },
-  messageTimestamp: 1696020087,
-  pushName: 'Ecuabet AGENCIA',
-  broadcast: false,
-  message: Message {
-    imageMessage: ImageMessage {
-      interactiveAnnotations: [],
-      scanLengths: [],
-      url: 'https://mmg.whatsapp.net/v/t62.7118-24/34665213_846974007147324_3436856886907334215_n.enc?ccb=11-4&oh=01_AdT6HeuZdgqCS0TgVnD1kHVaUpovFL9bNcHp8LtokHIqDQ&oe=653EBCBC&_nc_sid=000000&mms3=true',
-      mimetype: 'image/jpeg',
-      fileSha256: [Uint8Array],
-      fileLength: [Long],
-      height: 334,
-      width: 416,
-      mediaKey: [Uint8Array],
-      fileEncSha256: [Uint8Array],
-      directPath: '/v/t62.7118-24/34665213_846974007147324_3436856886907334215_n.enc?ccb=11-4&oh=01_AdT6HeuZdgqCS0TgVnD1kHVaUpovFL9bNcHp8LtokHIqDQ&oe=653EBCBC&_nc_sid=000000',
-      mediaKeyTimestamp: [Long],
-      jpegThumbnail: [Uint8Array],
-      viewOnce: false
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '_event_media__ea7e5131-a5b8-4d95-acec-96ac6f94ae1a',
-  from: '593982160124'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_a795372d-56b5-4075-9282-5e6c045a09c2',
-  keyword: 'key_aa1a95f1-9d4b-42bb-aaa7-9a8dcdb9b9cb',
-  answer: 'Puedes ayudarme con tu correo electrónico o número solicitud',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: false
-  },
-  refSerialize: '387c124274731d2fe0538e66066ff086'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_a652b096-88ae-4b7d-a5fc-bf3eede9adfb',
-  keyword: 'ans_a795372d-56b5-4075-9282-5e6c045a09c2',
-  answer: 'Perfecto, estamos buscando en nuestra base de datos',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: false
-  },
-  refSerialize: '790253d43cf0f5eadfe10a755b2db215'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593960952970@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB06B33A74FA38CB88FB2',
-    participant: undefined
-  },
-  messageTimestamp: 1696020091,
-  pushName: 'Luis Reyes',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'gracias',
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'gracias',
-  from: '593960952970'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e07a82c1-ffcd-4f71-8053-002c2a2f4adb',
-  keyword: 'key_2bfe1ec6-b449-46df-8e56-b9822951fe43',
+  ref: 'ans_a49910d2-c31a-42d0-9505-7cd6e59ac050',
+  keyword: 'key_024e90c8-ea66-4225-b6bd-7e67b5ecf71a',
   answer: 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?',
   options: {
     media: null,
@@ -319,11 +145,11 @@ Error al encolar: undefined
     keyword: {},
     callback: false
   },
-  refSerialize: '485226c30e9044c36be7c60ef8ff2531'
+  refSerialize: 'a4cbf953bfe834a6eb0a1e2221565f91'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_667b74cb-bb91-447f-bb93-7f71f1631935',
-  keyword: 'ans_e07a82c1-ffcd-4f71-8053-002c2a2f4adb',
+  ref: 'ans_73cf201d-9b23-4511-98c7-faa813e96131',
+  keyword: 'ans_a49910d2-c31a-42d0-9505-7cd6e59ac050',
   answer: '¿Cuéntanos por qué nos escribes?\n1. Información\n2. Desuscribirse',
   options: {
     media: null,
@@ -335,10 +161,34 @@ Error al encolar: undefined
       [Object], [Object],
       [Object], [Object],
       [Object], [Object],
-      [Object], [Object]
+      [Object]
     ],
     keyword: {},
     callback: true
   },
-  refSerialize: '104fa15d359c4d9689905c66f32f4dc8'
+  refSerialize: '8918fe1eb0efd3cebfca8b2473ceb9f0'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '593960952970@s.whatsapp.net',
+    fromMe: false,
+    id: '3EB0974702EE6E2BA8C99E',
+    participant: undefined
+  },
+  messageTimestamp: 1696054506,
+  pushName: 'Luis Reyes',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'ya estamos sigamos',
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'ya estamos sigamos',
+  from: '593960952970'
 }

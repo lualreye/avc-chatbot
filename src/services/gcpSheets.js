@@ -1,5 +1,6 @@
 const { JWT } = require("google-auth-library");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
+const { calculateDaysUntilDate } = require("../utils/calculateUntilDate");
 
 const SCOPES = [
   "https://www.googleapis.com/auth/spreadsheets",
@@ -28,19 +29,24 @@ class GoogleSheetService {
    * @param {*} dayNumber
    * @returns
    */
-  getRequest = async (numberRequest, email) => {
+  getRequest = async (codeRequest) => {
     try {
       const list = [];
       await this.doc.loadInfo();
-      const sheet = this.doc.sheetsByIndex[0]; // the first sheet
-      await sheet.loadCells("A1:H10");
+      const sheet = this.doc.sheetsByIndex[0];
       const rows = await sheet.getRows();
-      for (const a of Array.from(Array(rows.length).keys())) {
-        const cellA1 = sheet.getCell(a + 1, dayNumber - 1);
-        list.push(cellA1.value);
-      }
 
-      return list;
+      const rowDataArray = rows
+        .filter((row) => row.get('codigo') === codeRequest)
+        .map((row) => ({
+          code: row.get('codigo'),
+          user: row.get('usuario'),
+          timeLeft: calculateDaysUntilDate(row.get('fecha_de_baja'))
+        }));
+
+      const rowData = rowDataArray.length > 0 ? rowDataArray[0] : null;
+
+      return rowData;
     } catch (err) {
       console.log(err);
       return undefined;
