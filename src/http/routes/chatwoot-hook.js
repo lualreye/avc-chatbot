@@ -9,17 +9,14 @@ const chatWootHook = async (req, res) => {
   const wsProvider = req.wsProvider;
   const body = req.body;
 
-  console.log('provider', wsProvider)
-
-  console.log('body', body)
   if (body?.private) {
     res.send(null);
     return;
   }
+  console.log(body?.conversation?.meta)
 
   const phone = body?.conversation?.meta?.sender?.phone_number.replace('+', '')
 
-  console.log(phone)
 
   await wsProvider.sendText(`${phone}@c.us`, body.content)
   res.send(body)
