@@ -1,8 +1,8 @@
 require('dotenv').config();
-
 const { addKeyword } = require("@bot-whatsapp/bot");
 
 const { subscriptionKeywords } = require("../utils/subscription.keywords");
+const { tryAgain, goodbye } = require('../flows/goodbye.flow');
 const { isEmail } = require('../utils/emailValidator')
 const { formatDate } = require('../utils/formatDate.js')
 const GoogleSheetService = require('../services/gcpSheets');
@@ -21,11 +21,23 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
     },
     async (ctx, { state, fallBack }) => {
       const text = ctx.body;
+      const currentState = state.getMyState();
+      const fallBackUser = currentState?.fallBackUser ?? 0;
 
       if (!isEmail(text) && !text.split(' ').length > 1) {
+
+        if (fallBackUser > 2) {
+          return gotoFlow(tryAgain)
+        }
+
+        state.update({
+          fallBackUser: fallBackUser + 1
+        });
+
         fallBack(
           [
             'Esto no parece un correo electrónico ni un correo electrónico 🙁',
+            'Tampoco parecen ser un nombre o apellido',
             'Por favor ingresa un correo ó tu nombre y apellido'
           ]
         )
@@ -55,33 +67,29 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
   )
   .addAction(
     async (ctx, { state, flowDynamic }) => {
-      try {
-        const data = state.getMyState();
-  
-        const currentDate = new Date()
+      const data = state.getMyState();
 
-        const submitCurrentDate = new Date(currentDate);
-        submitCurrentDate.setDate(currentDate.getDate() + 30);
+      const currentDate = new Date()
 
-        const code = `N-${currentDate.getTime().toString()}`;
+      const submitCurrentDate = new Date(currentDate);
+      submitCurrentDate.setDate(currentDate.getDate() + 30);
 
-        const request = {
-          user: data.user,
-          reason: data.reason,
-          code: code,
-          requestDate: formatDate(currentDate),
-          unsubscribeDate: formatDate(submitCurrentDate),
-        }
-  
-        await googleSheet.saveRequest(request);
-  
-        state.update({
-          code: request.code
-        });
-        flowDynamic('```Tu solicitud ha sido guardada existosamente```')
-      } catch (error) {
-        console.log(error)
+      const code = `N-${currentDate.getTime().toString()}`;
+
+      const request = {
+        user: data.user,
+        reason: data.reason,
+        code: code,
+        requestDate: formatDate(currentDate),
+        unsubscribeDate: formatDate(submitCurrentDate),
       }
+
+      await googleSheet.saveRequest(request);
+
+      state.update({
+        code: request.code
+      });
+      flowDynamic('```Tu solicitud ha sido guardada existosamente```');
     }
   )
   .addAnswer(
@@ -89,10 +97,10 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       '_Por favor, guarda tu número solicitud_'
     ],
     null,
-    async (ctx, { state, flowDynamic, endFlow }) => {
+    async (ctx, { state, flowDynamic, gotoFlow }) => {
       const myState = state.getMyState();
       flowDynamic(`tú número de registro es: *${myState.code}*`)
-      endFlow()
+      gotoFlow(goodbye);
     }
   )
 

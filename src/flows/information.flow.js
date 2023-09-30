@@ -1,8 +1,8 @@
 const { addKeyword } = require("@bot-whatsapp/bot");
 
 const { informationKeywords } = require("../utils/subscription.keywords");
+const { tryAgain, goodbye } = require('../flows/goodbye.flow');
 const { isCode } = require('../utils/codeValidator');
-const { isEmail } = require('../utils/emailValidator');
 const GoogleSheetService = require('../services/gcpSheets');
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
@@ -13,15 +13,22 @@ const informationFlow = addKeyword(informationKeywords)
     {
       capture: true
     },
-    async (ctx, { state, fallBack, flowDynamic, endFlow }) => {
+    async (ctx, { state, fallBack, flowDynamic, endFlow, gotoFlow }) => {
       const text = ctx.body;
+      const currentState = state.getMyState();
+      const fallBackCode = currentState?.fallBackCode ?? 0;
 
-      if (!isCode(text) && !isEmail(text)) {
-        fallBack(
-          [
-            'Esto no parece un código de solicitud',
-          ]
-        )
+      if (!isCode(text)) {
+
+        if (fallBackCode > 2) {
+          return gotoFlow(tryAgain)
+        }
+
+        state.update({
+          fallBackCode: fallBackCode + 1
+        });
+
+        fallBack('Esto no parece un código de solicitud 🧐')
       }
 
 
@@ -35,9 +42,10 @@ const informationFlow = addKeyword(informationKeywords)
             `usuario: ${data.user}`,
             `Faltan ${data.timeLeft} día(s)`,
           ])
-          endFlow()
+          gotoFlow(goodbye);
         }
-        flowDynamic('Parece que este codigo no existe :(')
+        flowDynamic('Parece que este codigo no existe 😵‍💫');
+        gotoFlow(tryAgain)
       }
     }
   )
