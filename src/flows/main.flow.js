@@ -1,10 +1,16 @@
 const { EVENTS, addKeyword } = require('@bot-whatsapp/bot');
+
 const subscriptionFlow = require('./subscription.flow')
 const informationFlow = require('./information.flow')
+const { sendMessageChatWoot } = require('../services/chatwoot');
 
 const mainFlow = addKeyword(EVENTS.WELCOME)
-    .addAnswer(
-        'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
+    .addAction(
+        async (ctx, { flowDynamic }) => {
+            const MESSAGE = 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
+            await sendMessageChatWoot(MESSAGE, 'incoming')
+            await flowDynamic(MESSAGE)
+        }
     )
     .addAnswer(
         [

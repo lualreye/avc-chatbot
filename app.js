@@ -1,18 +1,16 @@
 require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
+
 const { createBot, createProvider, createFlow } = require('@bot-whatsapp/bot')
 const { init } = require('bot-ws-plugin-openai');
-
-const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-
-// mainflow
 const mainFlow = require('./src/flows/main.flow');
 const subscriptionFlow = require('./src/flows/subscription.flow')
 const informationFlow = require('./src/flows/information.flow')
+const HttpServer = require('./src/http/http.class');
 
 const employeesAddonConfig = {
     model: 'gpt-3.5-turbo-16k',
@@ -36,7 +34,6 @@ employeesAddon.employees([
 
 const main = async () => {
     const adapterDB = new MockAdapter()
-
     const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow])
     const adapterProvider = createProvider(BaileysProvider)
 
@@ -52,8 +49,10 @@ const main = async () => {
         }
     }
 
-    await createBot(configBot, configExtra)
-    QRPortalWeb()
+    await createBot(configBot, configExtra);
+
+    const server = new HttpServer(adapterProvider)
+    server.start();
 }
 
 main()
