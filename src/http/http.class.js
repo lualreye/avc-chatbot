@@ -7,7 +7,7 @@ class ServerHttp {
   wsProvider;
 
   constructor(wsProvider) {
-    this.wsProvider = wsProvider  
+    this.wsProvider = wsProvider
   }
 
 
@@ -16,6 +16,7 @@ class ServerHttp {
       .use(express.json())
       .use((req, res, next) => {
         req.wsProvider = this.wsProvider
+        next()
       })
       .use(router)
       .listen(this.port, () => console.log(`Listo por http://localhost:${this.port}`))
