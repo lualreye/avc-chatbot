@@ -25,4 +25,9 @@ const sendMessageChatWoot = async (msg = '', message_type = '') => {
     `${CHATWOOD_API}/ api/v1/accounts/conversations/1/messages`,
     requestOptions
   )
+
+  const data = await dataRaw.json()
+  return data
 }
+
+module.exports = sendMessageChatWoot
