@@ -30,4 +30,4 @@ const sendMessageChatWoot = async (msg = '', message_type = '') => {
   return data
 }
 
-module.exports = sendMessageChatWoot
+module.exports = { sendMessageChatWoot }
