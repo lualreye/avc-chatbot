@@ -8,7 +8,9 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
     .addAction(
         async (ctx, { flowDynamic }) => {
             const MESSAGE = 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
+            console.log('ejecutada la funcion de respuesta')
             await sendMessageChatWoot(MESSAGE, 'incoming')
+            console.log('despues de enviar el mensaje')
             await flowDynamic(MESSAGE)
         }
     )
