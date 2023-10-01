@@ -18,7 +18,7 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
         [
             '¿Cuéntanos por qué nos escribes?',
             '1. Información',
-            '2. Desuscribirse'
+            '2. Cancelar suscripción'
         ],
         {
             capture: true

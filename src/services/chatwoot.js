@@ -22,7 +22,7 @@ const sendMessageChatWoot = async (msg = '', message_type = '') => {
   }
 
   const dataRaw = await fetch(
-    `${CHATWOOD_API}/ api/v1/accounts/1/conversations/1/messages`,
+    `${CHATWOOD_API}/api/v1/accounts/1/conversations/1/messages`,
     requestOptions
   )
 
