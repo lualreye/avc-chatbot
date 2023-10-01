@@ -1,4 +1,7 @@
 node_modules
-bot_sessions
+*_sessions
 .env
-env
+*.log
+*.png
+tmp/*
+!tmp/.gitkeep
