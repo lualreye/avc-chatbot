@@ -27,7 +27,6 @@ router.get('/get-qr', async (_req, res) => {
   const YOUR_PATH_QR = join(process.cwd(), 'bot.qr.png');
   const fileStream = createReadStream(YOUR_PATH_QR);
 
-  console.log(fileStream)
   res.writeHead(200, { 'Content-type': 'image/png' })
   fileStream.pipe(res);
 });
