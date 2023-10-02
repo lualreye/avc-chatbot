@@ -2,10 +2,10 @@
   key: {
     remoteJid: '593995076954@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0DE5D83FE979994C936',
+    id: '28F41762454608D525AD0DD4C6AE4617',
     participant: undefined
   },
-  messageTimestamp: 1696265235,
+  messageTimestamp: 1696266583,
   pushName: 'Ohayo',
   broadcast: false,
   messageStubType: 2,
@@ -17,106 +17,28 @@
   key: {
     remoteJid: '593995076954@s.whatsapp.net',
     fromMe: false,
-    id: '3EB0DE5D83FE979994C936',
+    id: '28F41762454608D525AD0DD4C6AE4617',
     participant: undefined
   },
-  messageTimestamp: 1696265235,
+  messageTimestamp: 1696266583,
+  pushName: 'Ohayo',
+  broadcast: false,
+  messageStubType: 2,
+  messageStubParameters: [ 'No matching sessions found for message' ],
+  body: undefined,
+  from: '593995076954'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '593995076954@s.whatsapp.net',
+    fromMe: false,
+    id: '28F41762454608D525AD0DD4C6AE4617',
+    participant: undefined
+  },
+  messageTimestamp: 1696266584,
   pushName: 'Ohayo',
   broadcast: false,
   verifiedBizName: 'Ohayo',
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: '1. Información',
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '1. Información',
-  from: '593995076954'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2724fec6-fc73-4b10-8086-104a99e4b4c6',
-  keyword: 'key_6febeddd-3b73-4d67-9776-3f00b76e5aa1',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '0af5d8460fc00deb41d3b0ac7dea1a04'
-}
-Error al encolar: Cannot read properties of undefined (reading 'conversation_id')
-[handleMsg]:  {
-  key: {
-    remoteJid: '593998340827@s.whatsapp.net',
-    fromMe: false,
-    id: '9452A16DCBE7E47C21',
-    participant: undefined
-  },
-  messageTimestamp: 1696265244,
-  pushName: 'Roberto Moncayo',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage { text: 'hola', contextInfo: [ContextInfo] },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'hola',
-  from: '593998340827'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_58228e48-650c-4920-b4b8-a48c55c2346e',
-  keyword: 'key_94198ada-bc06-4661-ad52-9e38dda42d7b',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '7c22aa4b894ef2fd2927dd1659c6e0ee'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_eae2a591-61e4-48b7-a29f-c178d4bebfd4',
-  keyword: 'ans_58228e48-650c-4920-b4b8-a48c55c2346e',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'dbad938c2e3fcb8182a722b2faae3153'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593995254965@s.whatsapp.net',
-    fromMe: false,
-    id: '3ADBB484485253D8B6CD',
-    participant: undefined
-  },
-  messageTimestamp: 1696265245,
-  pushName: 'Diego Reyes 👨🏾‍💻',
-  broadcast: false,
   message: Message {
     conversation: 'Hola',
     messageContextInfo: MessageContextInfo {
@@ -125,184 +47,11 @@ Error al encolar: Cannot read properties of undefined (reading 'conversation_id'
     }
   },
   body: 'Hola',
-  from: '593995254965'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_58228e48-650c-4920-b4b8-a48c55c2346e',
-  keyword: 'key_94198ada-bc06-4661-ad52-9e38dda42d7b',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '7c22aa4b894ef2fd2927dd1659c6e0ee'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_eae2a591-61e4-48b7-a29f-c178d4bebfd4',
-  keyword: 'ans_58228e48-650c-4920-b4b8-a48c55c2346e',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'dbad938c2e3fcb8182a722b2faae3153'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_b4c3c18f-2370-4590-936e-c81f383adcd7',
-  keyword: 'ans_eae2a591-61e4-48b7-a29f-c178d4bebfd4',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'd639a0765d8ac05e0c1a62eac4244cea'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_b4c3c18f-2370-4590-936e-c81f383adcd7',
-  keyword: 'ans_eae2a591-61e4-48b7-a29f-c178d4bebfd4',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'd639a0765d8ac05e0c1a62eac4244cea'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_512b25be-7eda-4ec1-9f8f-d75b8200d442',
-  keyword: 'ans_b4c3c18f-2370-4590-936e-c81f383adcd7',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '7abe15644edb2ec4f962a08a720dda65'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_512b25be-7eda-4ec1-9f8f-d75b8200d442',
-  keyword: 'ans_b4c3c18f-2370-4590-936e-c81f383adcd7',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '7abe15644edb2ec4f962a08a720dda65'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_b0f4c88f-5c0b-47c3-bb03-4510fd8c4e09',
-  keyword: 'ans_512b25be-7eda-4ec1-9f8f-d75b8200d442',
-  answer: '__capture_only_intended__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '8bad96ab884051244c49b557702b4a1f'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_b0f4c88f-5c0b-47c3-bb03-4510fd8c4e09',
-  keyword: 'ans_512b25be-7eda-4ec1-9f8f-d75b8200d442',
-  answer: '__capture_only_intended__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '8bad96ab884051244c49b557702b4a1f'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593995254965@s.whatsapp.net',
-    fromMe: false,
-    id: '3A3122E9D5FB5712ED7A',
-    participant: undefined
-  },
-  messageTimestamp: 1696265251,
-  pushName: 'Diego Reyes 👨🏾‍💻',
-  broadcast: false,
-  message: Message {
-    conversation: '2',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: '2',
-  from: '593995254965'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593995076954@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB07F170FCCF782E6AAFC',
-    participant: undefined
-  },
-  messageTimestamp: 1696265253,
-  pushName: 'Ohayo',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'Hola',
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  verifiedBizName: 'Ohayo',
-  body: 'Hola',
   from: '593995076954'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_58228e48-650c-4920-b4b8-a48c55c2346e',
-  keyword: 'key_94198ada-bc06-4661-ad52-9e38dda42d7b',
+  ref: 'ans_d50b7271-47c9-4ed9-85ea-b3018e511fab',
+  keyword: 'key_c7d44b4b-a333-4034-ad97-46e542da1f8b',
   answer: '__call_action__',
   options: {
     media: null,
@@ -314,11 +63,11 @@ Error al encolar: Cannot read properties of undefined (reading 'conversation_id'
     keyword: {},
     callback: true
   },
-  refSerialize: '7c22aa4b894ef2fd2927dd1659c6e0ee'
+  refSerialize: '78c486d1f64fef46a57f0dec083886b0'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_eae2a591-61e4-48b7-a29f-c178d4bebfd4',
-  keyword: 'ans_58228e48-650c-4920-b4b8-a48c55c2346e',
+  ref: 'ans_d3817cf2-717b-420b-a161-eb7c2fc38c4e',
+  keyword: 'ans_d50b7271-47c9-4ed9-85ea-b3018e511fab',
   answer: '__call_action__',
   options: {
     media: null,
@@ -330,11 +79,11 @@ Error al encolar: Cannot read properties of undefined (reading 'conversation_id'
     keyword: {},
     callback: true
   },
-  refSerialize: 'dbad938c2e3fcb8182a722b2faae3153'
+  refSerialize: 'a52ac77912d54f3c6bc80f99975690e5'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_b4c3c18f-2370-4590-936e-c81f383adcd7',
-  keyword: 'ans_eae2a591-61e4-48b7-a29f-c178d4bebfd4',
+  ref: 'ans_64d2f84c-04b5-4d45-b8f6-1110e94042d1',
+  keyword: 'ans_d3817cf2-717b-420b-a161-eb7c2fc38c4e',
   answer: '__call_action__',
   options: {
     media: null,
@@ -346,11 +95,11 @@ Error al encolar: Cannot read properties of undefined (reading 'conversation_id'
     keyword: {},
     callback: true
   },
-  refSerialize: 'd639a0765d8ac05e0c1a62eac4244cea'
+  refSerialize: 'b3812623571f40e70840015aee58ea42'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_512b25be-7eda-4ec1-9f8f-d75b8200d442',
-  keyword: 'ans_b4c3c18f-2370-4590-936e-c81f383adcd7',
+  ref: 'ans_fcfb644a-b107-44bc-801a-d12ba7cc2395',
+  keyword: 'ans_64d2f84c-04b5-4d45-b8f6-1110e94042d1',
   answer: '__call_action__',
   options: {
     media: null,
@@ -362,149 +111,6 @@ Error al encolar: Cannot read properties of undefined (reading 'conversation_id'
     keyword: {},
     callback: true
   },
-  refSerialize: '7abe15644edb2ec4f962a08a720dda65'
+  refSerialize: '2b89a6c641a3e6a0317d8f84a3e90dc3'
 }
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_b0f4c88f-5c0b-47c3-bb03-4510fd8c4e09',
-  keyword: 'ans_512b25be-7eda-4ec1-9f8f-d75b8200d442',
-  answer: '__capture_only_intended__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '8bad96ab884051244c49b557702b4a1f'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593995076954@s.whatsapp.net',
-    fromMe: false,
-    id: '3EB03E4F2E30A7B08F3EC4',
-    participant: undefined
-  },
-  messageTimestamp: 1696265257,
-  pushName: 'Ohayo',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: '1.',
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  verifiedBizName: 'Ohayo',
-  body: '1.',
-  from: '593995076954'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_1010e5e3-4e29-4307-884d-83735db48279',
-  keyword: 'key_a40a486b-514f-4735-9727-feb8e0197bb8',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '5ac37a7b6d039fcba57e1ccb89c67d50'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '593998340827@s.whatsapp.net',
-    fromMe: false,
-    id: 'E60EE9C2BEEBCE6462',
-    participant: undefined
-  },
-  messageTimestamp: 1696265262,
-  pushName: 'Roberto Moncayo',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'Quiero saber mas informacion',
-      contextInfo: [ContextInfo]
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2
-    }
-  },
-  body: 'Quiero saber mas informacion',
-  from: '593998340827'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2724fec6-fc73-4b10-8086-104a99e4b4c6',
-  keyword: 'key_6febeddd-3b73-4d67-9776-3f00b76e5aa1',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '0af5d8460fc00deb41d3b0ac7dea1a04'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_3aa758c1-2809-4bf4-8a4a-82d8c7a68a65',
-  keyword: 'ans_2724fec6-fc73-4b10-8086-104a99e4b4c6',
-  answer: '__capture_only_intended__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'e5af9217617b4e48da989d1d4a043cab'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_2724fec6-fc73-4b10-8086-104a99e4b4c6',
-  keyword: 'key_6febeddd-3b73-4d67-9776-3f00b76e5aa1',
-  answer: '__call_action__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: '0af5d8460fc00deb41d3b0ac7dea1a04'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_3aa758c1-2809-4bf4-8a4a-82d8c7a68a65',
-  keyword: 'ans_2724fec6-fc73-4b10-8086-104a99e4b4c6',
-  answer: '__capture_only_intended__',
-  options: {
-    media: null,
-    buttons: [],
-    capture: true,
-    child: null,
-    delay: 0,
-    nested: [],
-    keyword: {},
-    callback: true
-  },
-  refSerialize: 'e5af9217617b4e48da989d1d4a043cab'
-}
+Error al encolar: Unexpected token < in JSON at position 0

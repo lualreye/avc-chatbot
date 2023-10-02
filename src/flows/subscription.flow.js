@@ -66,12 +66,6 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       ctxFn.state.update({
         user: text
       });
-    }
-  )
-  .addAction(
-    async (ctx, ctxFn) => {
-      const chatwoot = ctxFn.extensions.chatwoot;
-      const currentState = ctxFn.state.getMyState();
 
       const REASON_MESSAGE = 'Nos indicas el motivo por el que cancelas la suscripción 😢'
 
@@ -93,11 +87,14 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       const currentState = ctxFn.state.getMyState();
       const text = ctx.body;
 
+      console.log('me estoy ejecutando', text)
       chatwoot.createMessage({
         msg: text,
         mode: 'incoming',
         conversationId: currentState.conversation_id
       })
+
+      console.log(text)
 
       if (text.length < 4) {
 
