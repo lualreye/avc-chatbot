@@ -8,27 +8,56 @@ const GoogleSheetService = require('../services/gcpSheets');
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
 const informationFlow = addKeyword(informationKeywords)
-  .addAnswer(
-    'Puedes ayudarme con tú número solicitud o correo electronico',
+  .addAction(
+    async (ctx, ctxFn) => {
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
+      const INITIAL_INFO_MESSAGE = 'Puedes ayudarme con tú número solicitud'
+
+      chatwoot.createMessage({
+        msg: INITIAL_INFO_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      ctxFn.flowDynamic(INITIAL_INFO_MESSAGE)
+    }
+  )
+  .addAction(
     {
       capture: true
     },
-    async (ctx, { state, fallBack, flowDynamic, gotoFlow }) => {
+    async (ctx, ctxFn) => {
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
       const text = ctx.body;
-      const currentState = state.getMyState();
       const fallBackCode = currentState?.fallBackCode ?? 0;
+
+      const FALLBACK_MESSAGE = 'Esto no parece un código de solicitud 🧐'
+
+      chatwoot.createMessage({
+        msg: text,
+        mode: 'incoming',
+        conversationId: currentState.conversation_id
+      })
 
       if (!isCode(text)) {
 
         if (fallBackCode > 2) {
-          return gotoFlow(tryAgain)
+          return ctxFn.gotoFlow(tryAgain)
         }
 
-        state.update({
+        ctxFn.state.update({
           fallBackCode: fallBackCode + 1
         });
 
-        fallBack('Esto no parece un código de solicitud 🧐')
+        chatwoot.createMessage({
+          msg: FALLBACK_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        ctxFn.fallBack(FALLBACK_MESSAGE)
       }
 
 
@@ -36,16 +65,31 @@ const informationFlow = addKeyword(informationKeywords)
       if (isCode(text)) {
         const data = await googleSheet.getRequest(text)
         if (data !== undefined) {
-          flowDynamic([
-            'Tus datos son los siguientes:',
-            `codigo: ${data.code}`,
-            `usuario: ${data.user}`,
-            `Faltan ${data.timeLeft} día(s)`,
-          ])
-          gotoFlow(goodbye);
+
+          const DATA_MESSAGE = `Tus datos son los siguientes: \n codigo: ${data.code} \n usuario: ${data.user} \n Faltan ${data.timeLeft} día(s)`
+          
+          chatwoot.createMessage({
+            msg: DATA_MESSAGE,
+            mode: 'outgoing',
+            conversationId: currentState.conversation_id
+          })
+
+          ctxFn.flowDynamic(DATA_MESSAGE)
+          ctxFn.gotoFlow(goodbye);
+        } else {
+
+          const NO_CODE_MESSAGE = 'Parece que este codigo no existe 😵‍💫'
+  
+          chatwoot.createMessage({
+            msg: NO_CODE_MESSAGE,
+            mode: 'outgoing',
+            conversationId: currentState.conversation_id
+          })
+  
+          ctxFn.flowDynamic(NO_CODE_MESSAGE);
+          ctxFn.gotoFlow(tryAgain)
         }
-        flowDynamic('Parece que este codigo no existe 😵‍💫');
-        gotoFlow(tryAgain)
+
       }
     }
   )

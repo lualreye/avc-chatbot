@@ -53,28 +53,33 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
             capture: true
         },
         async (ctx, ctxFn) => {
-            try {
-                const { state } = ctxFn;
-                const entryMessage = ctx.body;
-                const plugin = ctxFn.extensions.employeesAddon;
-                const idealEmployee = await plugin.determine(entryMessage);
+            const currentState = ctxFn.state.getMyState();
+            const chatwoot = ctxFn.extensions.chatwoot;
+            const body = ctx.body;
+            const plugin = ctxFn.extensions.employeesAddon;
+            const idealEmployee = await plugin.determine(body);
 
-                if (!idealEmployee?.employee) {
-                    return ctxFn.flowDynamic([
-                        'Lo siento no he podido entenderte',
-                        '¿Qué deseas hacer?',
-                        '1. Información',
-                        '2. Cancelar suscripción'
-                    ],)
-                }
+            await chatwoot.createMessage({
+                msg: body,
+                mode: 'incoming',
+                conversationId: currentState.conversation_id
+            })
 
-                state.update({ idealEmployee })
+            if (!idealEmployee?.employee) {
+                const MESSAGE = 'Lo siento no he podido entenderte \n ¿Qué deseas hacer? \n 1. Información \n 2. Cancelar suscripción'
 
-                plugin.gotoFlow(idealEmployee.employee, ctxFn)
+                await chatwoot.createMessage({
+                    msg: MESSAGE,
+                    mode: 'outgoing',
+                    conversationId: currentState.conversation_id
+                })
 
-            } catch (error) {
-                console.log('error', error)
+                return ctxFn.flowDynamic(MESSAGE)
             }
+
+            ctxFn.state.update({ idealEmployee })
+
+            plugin.gotoFlow(idealEmployee.employee, ctxFn)
         },
         [informationFlow, subscriptionFlow]
     )

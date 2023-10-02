@@ -10,64 +10,116 @@ const GoogleSheetService = require('../services/gcpSheets');
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
 const subscriptionFlow = addKeyword(subscriptionKeywords)
-  .addAnswer(
-    [
-      'Para proceder con la baja de suscripción, necesitamos:',
-      'El Correo Electrónico que usaste en mercado Pago',
-      'ó puede darnos tu nombre y apellido'
-    ],
+  .addAction(
+    async (ctx, ctxFn) => {
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
+
+      const CANCELLATION_MESSAGE = 'Para proceder con la baja de suscripción, necesitamos: \n El Correo Electrónico que usaste en mercado Pago \n ó puede darnos tu nombre y apellido'
+
+      chatwoot.createMessage({
+        msg: CANCELLATION_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      ctxFn.flowDynamic(CANCELLATION_MESSAGE)
+    }
+  )
+  .addAction(
     {
       capture: true
     },
-    async (ctx, { state, fallBack }) => {
+    async (ctx, ctxFn) => {
       const text = ctx.body;
-      const currentState = state.getMyState();
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
       const fallBackUser = currentState?.fallBackUser ?? 0;
+
+      chatwoot.createMessage({
+        msg: text,
+        mode: 'incoming',
+        conversationId: currentState.conversation_id
+      })
 
       if (!isEmail(text) && !text.split(' ').length > 1) {
 
         if (fallBackUser > 2) {
-          return gotoFlow(tryAgain)
+          return ctxFn.gotoFlow(tryAgain)
         }
 
-        state.update({
+        ctxFn.state.update({
           fallBackUser: fallBackUser + 1
         });
 
-        fallBack(
-          [
-            'Esto no parece un correo electrónico ni un correo electrónico 🙁',
-            'Tampoco parecen ser un nombre o apellido',
-            'Por favor ingresa un correo ó tu nombre y apellido'
-          ]
-        )
+        const FALLBACK_MESSAGE = 'Esto no parece un correo electrónico ni un correo electrónico 🙁, \n Tampoco parecen ser un nombre o apellido, \n Por favor ingresa un correo ó tu nombre y apellido'
+
+        chatwoot.createMessage({
+          msg: FALLBACK_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        ctxFn.fallBack(FALLBACK_MESSAGE)
       }
 
-      state.update({
+      ctxFn.state.update({
         user: text
       });
     }
   )
-  .addAnswer(
-    'Nos indicas el motivo por el que cancelas la suscripción 😢',
+  .addAction(
+    async (ctx, ctxFn) => {
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
+
+      const REASON_MESSAGE = 'Nos indicas el motivo por el que cancelas la suscripción 😢'
+
+      chatwoot.createMessage({
+        msg: REASON_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      ctxFn.flowDynamic(REASON_MESSAGE)
+    }
+  )
+  .addAction(
     {
       capture: true
     },
-    async (ctx, { state, fallBack }) => {
+    async (ctx, ctxFn) => {
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
       const text = ctx.body;
 
+      chatwoot.createMessage({
+        msg: text,
+        mode: 'incoming',
+        conversationId: currentState.conversation_id
+      })
+
       if (text.length < 4) {
-        fallBack('Esto no parece un motivo')
+
+        const FALLBACK_MESSAGE = 'Esto no parece un motivo'
+
+        chatwoot.createMessage({
+          msg: FALLBACK_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        ctxFn.fallBack(FALLBACK_MESSAGE)
       }
 
-      state.update({
+      ctxFn.state.update({
         reason: text
       })
     }
   )
   .addAction(
-    async (ctx, { state, flowDynamic }) => {
-      const data = state.getMyState();
+    async (ctx, ctxFn) => {
+      const currentState = ctxFn.state.getMyState();
 
       const currentDate = new Date()
 
@@ -77,8 +129,8 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       const code = `N-${currentDate.getTime().toString()}`;
 
       const request = {
-        user: data.user,
-        reason: data.reason,
+        user: currentState.user,
+        reason: currentState.reason,
         code: code,
         requestDate: formatDate(currentDate),
         unsubscribeDate: formatDate(submitCurrentDate),
@@ -86,21 +138,37 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
 
       await googleSheet.saveRequest(request);
 
-      state.update({
+      ctxFn.state.update({
         code: request.code
       });
-      flowDynamic('```Tu solicitud ha sido guardada existosamente```');
-    }
-  )
-  .addAnswer(
-    [
-      '_Por favor, guarda tu número solicitud_'
-    ],
-    null,
-    async (ctx, { state, flowDynamic, gotoFlow }) => {
-      const myState = state.getMyState();
-      flowDynamic(`tú número de registro es: *${myState.code}*`)
-      gotoFlow(goodbye);
+
+      chatwoot.createMessage({
+        msg: FALLBACK_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      const LAST_MESSAGE = '```Tu solicitud ha sido guardada existosamente```'
+
+      ctxFn.flowDynamic(LAST_MESSAGE);
+
+      chatwoot.createMessage({
+        msg: LAST_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      const SAVE_MESSAGE = '_Por favor, guarda tu número solicitud_'
+
+      ctxFn.flowDynamic(`tú número de registro es: *${currentState.code}*`)
+
+      chatwoot.createMessage({
+        msg: `tú número de registro es: *${currentState.code}*`,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      ctxFn.gotoFlow(goodbye);
     }
   )
 
