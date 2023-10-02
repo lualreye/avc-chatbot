@@ -38,12 +38,8 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
         async (ctx, ctxFn) => {
             const chatwoot = ctxFn.extensions.chatwoot;
             const currentState = ctxFn.state.getMyState();
-            const MESSAGE_OPTIONS = [
-                '¿Cuéntanos por qué nos escribes?',
-                '1. Información',
-                '2. Cancelar suscripción'
-            ]
-            console.log(MESSAGE_OPTIONS)
+            const MESSAGE_OPTIONS = 
+                '¿Cuéntanos por qué nos escribes? \n 1. Información \n 2. Cancelar suscripción'
             await chatwoot.createMessage({
                 msg: MESSAGE_OPTIONS,
                 mode: 'outgoing',

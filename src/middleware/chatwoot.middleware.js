@@ -31,7 +31,6 @@ module.exports = async (ctx, options) => {
         contact_id: currentState.chat_woot_id,
         phone_number: ctx.from,
       });
-      console.log('middleware conversation', conversation)
       await options.state.update({ conversation_id: conversation.id });
     }
       //Si tienes asignado agente no continua

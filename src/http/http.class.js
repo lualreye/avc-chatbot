@@ -15,7 +15,7 @@ class ServerHttp {
     return this.app = express()
       .use(express.json())
       .use((req, res, next) => {
-        req.wsProvider = this.wsProvider
+        req.ws = this.wsProvider
         next()
       })
       .use(router)

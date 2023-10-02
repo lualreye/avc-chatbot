@@ -2,25 +2,25 @@
   key: {
     remoteJid: '593995076954@s.whatsapp.net',
     fromMe: false,
-    id: '8F5A88327B23003C91BC35E0CF206E8C',
+    id: 'A67C22431E32BED606D8FBAF026446B1',
     participant: undefined
   },
-  messageTimestamp: 1696235700,
+  messageTimestamp: 1696241659,
   pushName: 'Ohayo',
   broadcast: false,
   message: Message {
-    conversation: 'Hol',
+    conversation: 'Hola',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Hol',
+  body: 'Hola',
   from: '593995076954'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_34d08c11-a5fa-4d7c-8ae1-410900000d74',
-  keyword: 'key_2ce87d02-0ace-4bfa-8f20-f072992a0a82',
+  ref: 'ans_7d07a47e-a6e0-4c20-bea0-29d1eae805be',
+  keyword: 'key_abb820ff-64c8-4853-b4e0-fe656a5ed116',
   answer: '__call_action__',
   options: {
     media: null,
@@ -32,11 +32,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '63d4a1f7299ba6abab05d46e365039c9'
+  refSerialize: '6cc9f4294e7387ece62be445717be417'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e5d76a4e-0418-470e-a0a2-efa0fbbab5e7',
-  keyword: 'ans_34d08c11-a5fa-4d7c-8ae1-410900000d74',
+  ref: 'ans_b9efbd8c-f32d-43bc-a121-96ac810feebf',
+  keyword: 'ans_7d07a47e-a6e0-4c20-bea0-29d1eae805be',
   answer: '__call_action__',
   options: {
     media: null,
@@ -48,11 +48,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '759b90ab5844b3ec8d3e91136ff99827'
+  refSerialize: '28c3383ee50120a36ac2039e4a491de6'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e8e621ce-8b0a-4fdb-a2cf-26a64ad1c400',
-  keyword: 'ans_e5d76a4e-0418-470e-a0a2-efa0fbbab5e7',
+  ref: 'ans_d386e85d-d986-4ac2-80a6-705f891c8b05',
+  keyword: 'ans_b9efbd8c-f32d-43bc-a121-96ac810feebf',
   answer: '__call_action__',
   options: {
     media: null,
@@ -64,11 +64,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '145b388502a753b9eace60d9d9787b53'
+  refSerialize: '85cd76999dc2f275a05c3c9f03224756'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_3ad09f2e-2b7e-4d06-b558-a01cb42cb119',
-  keyword: 'ans_e8e621ce-8b0a-4fdb-a2cf-26a64ad1c400',
+  ref: 'ans_f729c313-c967-4c53-be3e-1e888722fabd',
+  keyword: 'ans_d386e85d-d986-4ac2-80a6-705f891c8b05',
   answer: '__call_action__',
   options: {
     media: null,
@@ -80,11 +80,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'e7346ef6b00d4f4bbc600ab6984a4cec'
+  refSerialize: 'e170e96185e4b54d4308e9749111f895'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e6701e8c-902d-4b21-813f-addcd9ed82ee',
-  keyword: 'ans_3ad09f2e-2b7e-4d06-b558-a01cb42cb119',
+  ref: 'ans_d2dd5b85-a6f0-497b-8fe5-ec8d22ccc500',
+  keyword: 'ans_f729c313-c967-4c53-be3e-1e888722fabd',
   answer: '__capture_only_intended__',
   options: {
     media: null,
@@ -96,5 +96,5 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'a4c7d475b62c5c9a36c18070da5da07d'
+  refSerialize: 'ce760ae15009ea3a917d5f3acb03f65b'
 }
