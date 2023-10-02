@@ -45,11 +45,15 @@ class ChatWoot {
       headers: this.buildHeader(),
     };
 
+    console.log('req options', requestOptions)
+
     const dataAPI = await fetch(
       `${this.api}/api/v1/accounts/${this.config.accounts}/contacts/search?include_contact_inboxes=false&page=1&sort=-last_activity_at&q=${phone}`,
       requestOptions
     );
-    const data = await dataAPI.json();
+
+    console.log(dataAPI)
+    const data = dataAPI;
     console.log(data.payload)
     return data.payload;
   };

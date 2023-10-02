@@ -10,10 +10,12 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
         if (!currentGlobalState.status) {
             return endFlow();
         }
+        console.log('ejecutado el primer action')
     })
     .addAction(chatwootMiddleware)
     .addAction(
         async (ctx, ctxFn) => {
+            console.log('ejecutado el tercer action')
             const chatwoot = ctxFn.extensions.chatwoot;
             const currentState = ctxFn.state.getMyState();
             const body = ctx.body;
