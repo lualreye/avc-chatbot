@@ -2,25 +2,25 @@
   key: {
     remoteJid: '593995076954@s.whatsapp.net',
     fromMe: false,
-    id: 'F239D45DE3EE1A76A47DBB450229C5E2',
+    id: '8F5A88327B23003C91BC35E0CF206E8C',
     participant: undefined
   },
-  messageTimestamp: 1696234597,
+  messageTimestamp: 1696235700,
   pushName: 'Ohayo',
   broadcast: false,
   message: Message {
-    conversation: 'Hola',
+    conversation: 'Hol',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Hola',
+  body: 'Hol',
   from: '593995076954'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_7877d4fe-52df-4160-9bc0-4572b300f62b',
-  keyword: 'key_995cfce5-e219-4c7b-98f2-8924d6b348f8',
+  ref: 'ans_34d08c11-a5fa-4d7c-8ae1-410900000d74',
+  keyword: 'key_2ce87d02-0ace-4bfa-8f20-f072992a0a82',
   answer: '__call_action__',
   options: {
     media: null,
@@ -32,11 +32,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '3c59dab58c7514953e4937b9ce14d090'
+  refSerialize: '63d4a1f7299ba6abab05d46e365039c9'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_f2bf0d62-8969-465d-8f05-85ffcfaf3226',
-  keyword: 'ans_7877d4fe-52df-4160-9bc0-4572b300f62b',
+  ref: 'ans_e5d76a4e-0418-470e-a0a2-efa0fbbab5e7',
+  keyword: 'ans_34d08c11-a5fa-4d7c-8ae1-410900000d74',
   answer: '__call_action__',
   options: {
     media: null,
@@ -48,11 +48,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '1ccdb93a83e53f2685afeaea595dd444'
+  refSerialize: '759b90ab5844b3ec8d3e91136ff99827'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_03034da9-7278-48be-9aca-f9adf54341f8',
-  keyword: 'ans_f2bf0d62-8969-465d-8f05-85ffcfaf3226',
+  ref: 'ans_e8e621ce-8b0a-4fdb-a2cf-26a64ad1c400',
+  keyword: 'ans_e5d76a4e-0418-470e-a0a2-efa0fbbab5e7',
   answer: '__call_action__',
   options: {
     media: null,
@@ -64,6 +64,37 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'e848f6522d6f2215bb9d976550cfbff5'
+  refSerialize: '145b388502a753b9eace60d9d9787b53'
 }
-Error al encolar: response is not defined
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_3ad09f2e-2b7e-4d06-b558-a01cb42cb119',
+  keyword: 'ans_e8e621ce-8b0a-4fdb-a2cf-26a64ad1c400',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'e7346ef6b00d4f4bbc600ab6984a4cec'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_e6701e8c-902d-4b21-813f-addcd9ed82ee',
+  keyword: 'ans_3ad09f2e-2b7e-4d06-b558-a01cb42cb119',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'a4c7d475b62c5c9a36c18070da5da07d'
+}

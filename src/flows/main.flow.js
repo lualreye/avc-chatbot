@@ -23,24 +23,33 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
                 mode: 'incoming',
                 conversationId: currentState.conversation_id
             })
+
             const MESSAGE = 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
             await chatwoot.createMessage({
                 msg: MESSAGE,
-                mode: 'incoming',
+                mode: 'outgoing',
                 conversationId: currentState.conversation_id
             })
-            await flowDynamic(MESSAGE)
+
+            await ctxFn.flowDynamic(MESSAGE)
         }
     )
     .addAction(
-        async (ctx, { flowDynamic }) => {
+        async (ctx, ctxFn) => {
+            const chatwoot = ctxFn.extensions.chatwoot;
+            const currentState = ctxFn.state.getMyState();
             const MESSAGE_OPTIONS = [
                 '¿Cuéntanos por qué nos escribes?',
                 '1. Información',
                 '2. Cancelar suscripción'
             ]
-            await sendMessageChatWoot(MESSAGE_OPTIONS, 'incoming')
-            await flowDynamic(MESSAGE_OPTIONS)
+            console.log(MESSAGE_OPTIONS)
+            await chatwoot.createMessage({
+                msg: MESSAGE_OPTIONS,
+                mode: 'outgoing',
+                conversationId: currentState.conversation_id
+            })
+            await ctxFn.flowDynamic(MESSAGE_OPTIONS)
         }
     )
     .addAction(

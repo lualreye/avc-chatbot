@@ -4,7 +4,7 @@ const chatWootHook = async (req, res) => {
   const message = body.content
   const phone = body.phone_number?.replace('+','')
 
-  if(body.message_type !== 'outgoin'){
+  if(body.message_type !== 'outgoing'){
     res.send({a:1})
     return
   }
