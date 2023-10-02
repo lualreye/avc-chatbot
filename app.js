@@ -43,8 +43,6 @@ const main = async () => {
         }
     )
 
-
-    console.log(employeesAddonConfig)
     const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow])
     const adapterProvider = createProvider(BaileysProvider)

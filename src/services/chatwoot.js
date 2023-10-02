@@ -139,7 +139,6 @@ class ChatWoot {
 
       const raw = JSON.stringify({ payload });
   
-      console.log('raw filter', raw)
       const requestOptions = {
         method: "POST",
         headers: this.buildHeader(),
@@ -151,7 +150,6 @@ class ChatWoot {
         `${this.api}/api/v1/accounts/${this.config.accounts}/conversations/filter`,
         requestOptions
       );
-      console.log(dataAPI)
       const data = await dataAPI.json();
       return data;
     } catch (error) {

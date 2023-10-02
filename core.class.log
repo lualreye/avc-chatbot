@@ -2,10 +2,10 @@
   key: {
     remoteJid: '593995076954@s.whatsapp.net',
     fromMe: false,
-    id: 'CA7031686711B99A4A116A8AF05DFAB4',
+    id: 'F239D45DE3EE1A76A47DBB450229C5E2',
     participant: undefined
   },
-  messageTimestamp: 1696231935,
+  messageTimestamp: 1696234597,
   pushName: 'Ohayo',
   broadcast: false,
   message: Message {
@@ -19,8 +19,8 @@
   from: '593995076954'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_5249e33a-5bab-4ea7-a9c7-a86c34923401',
-  keyword: 'key_cd7d5112-b569-4dde-80a8-2813ccf168f3',
+  ref: 'ans_7877d4fe-52df-4160-9bc0-4572b300f62b',
+  keyword: 'key_995cfce5-e219-4c7b-98f2-8924d6b348f8',
   answer: '__call_action__',
   options: {
     media: null,
@@ -32,11 +32,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '4f56b1e65132073f1d59245ae36fb465'
+  refSerialize: '3c59dab58c7514953e4937b9ce14d090'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_13322834-0867-41a8-a5f0-76fd0ad11da8',
-  keyword: 'ans_5249e33a-5bab-4ea7-a9c7-a86c34923401',
+  ref: 'ans_f2bf0d62-8969-465d-8f05-85ffcfaf3226',
+  keyword: 'ans_7877d4fe-52df-4160-9bc0-4572b300f62b',
   answer: '__call_action__',
   options: {
     media: null,
@@ -48,11 +48,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '6c658343539be88e487b3ba5656a5cd1'
+  refSerialize: '1ccdb93a83e53f2685afeaea595dd444'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_341d7c3f-9f82-4d70-8938-0eb594b55aae',
-  keyword: 'ans_13322834-0867-41a8-a5f0-76fd0ad11da8',
+  ref: 'ans_03034da9-7278-48be-9aca-f9adf54341f8',
+  keyword: 'ans_f2bf0d62-8969-465d-8f05-85ffcfaf3226',
   answer: '__call_action__',
   options: {
     media: null,
@@ -64,6 +64,6 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '8deda6600fe8ddfdb4cbc2c492d87950'
+  refSerialize: 'e848f6522d6f2215bb9d976550cfbff5'
 }
-Error al encolar: sendMessageChatWoot is not defined
+Error al encolar: response is not defined

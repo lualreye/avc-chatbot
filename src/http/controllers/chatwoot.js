@@ -2,7 +2,7 @@ const chatWootHook = async (req, res) => {
   const adapterProvider = req.ws;
   const body = req.body
   const message = body.content
-  const phone = body.conversation.meta.sender.phone_number.replace('+','')
+  const phone = body.phone_number?.replace('+','')
 
   if(body.message_type !== 'outgoin'){
     res.send({a:1})
@@ -10,7 +10,6 @@ const chatWootHook = async (req, res) => {
   }
 
   await adapterProvider.sendText(`${phone}@c.us`, message);
-  console.log({phone, message})
   res.send({phone, message})
 }
 

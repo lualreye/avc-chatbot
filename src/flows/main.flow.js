@@ -10,12 +10,10 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
         if (!currentGlobalState.status) {
             return endFlow();
         }
-        console.log('ejecutado el primer action')
     })
     .addAction(chatwootMiddleware)
     .addAction(
         async (ctx, ctxFn) => {
-            console.log('ejecutado el tercer action')
             const chatwoot = ctxFn.extensions.chatwoot;
             const currentState = ctxFn.state.getMyState();
             const body = ctx.body;
@@ -26,7 +24,11 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
                 conversationId: currentState.conversation_id
             })
             const MESSAGE = 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
-            await sendMessageChatWoot(MESSAGE, 'incoming')
+            await chatwoot.createMessage({
+                msg: MESSAGE,
+                mode: 'incoming',
+                conversationId: currentState.conversation_id
+            })
             await flowDynamic(MESSAGE)
         }
     )
