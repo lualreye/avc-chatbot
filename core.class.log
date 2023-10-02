@@ -2,25 +2,25 @@
   key: {
     remoteJid: '593995076954@s.whatsapp.net',
     fromMe: false,
-    id: '5AC8EDA429AE6F8E093EA30086FAC13A',
+    id: 'CA7031686711B99A4A116A8AF05DFAB4',
     participant: undefined
   },
-  messageTimestamp: 1696223136,
+  messageTimestamp: 1696231935,
   pushName: 'Ohayo',
   broadcast: false,
   message: Message {
-    conversation: 'Hdhe',
+    conversation: 'Hola',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Hdhe',
+  body: 'Hola',
   from: '593995076954'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_431dd698-51d6-4ebc-b7f1-ab0fadf8f973',
-  keyword: 'key_0d436393-7095-44f1-b0eb-cc9d9bb5dc70',
+  ref: 'ans_5249e33a-5bab-4ea7-a9c7-a86c34923401',
+  keyword: 'key_cd7d5112-b569-4dde-80a8-2813ccf168f3',
   answer: '__call_action__',
   options: {
     media: null,
@@ -32,11 +32,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'd612992184788a23ae0852affccb543c'
+  refSerialize: '4f56b1e65132073f1d59245ae36fb465'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_cbaf0381-781a-46ee-964a-61b8a2dd954f',
-  keyword: 'ans_431dd698-51d6-4ebc-b7f1-ab0fadf8f973',
+  ref: 'ans_13322834-0867-41a8-a5f0-76fd0ad11da8',
+  keyword: 'ans_5249e33a-5bab-4ea7-a9c7-a86c34923401',
   answer: '__call_action__',
   options: {
     media: null,
@@ -48,11 +48,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'e2dccee74e48f5f41751f07645b7c5e6'
+  refSerialize: '6c658343539be88e487b3ba5656a5cd1'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_88bf526a-6263-4098-8a48-eac32ad57198',
-  keyword: 'ans_cbaf0381-781a-46ee-964a-61b8a2dd954f',
+  ref: 'ans_341d7c3f-9f82-4d70-8938-0eb594b55aae',
+  keyword: 'ans_13322834-0867-41a8-a5f0-76fd0ad11da8',
   answer: '__call_action__',
   options: {
     media: null,
@@ -64,6 +64,6 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '735de4ddeacf2a39eb8e7bf96d0deaee'
+  refSerialize: '8deda6600fe8ddfdb4cbc2c492d87950'
 }
-Error al encolar: Cannot read properties of undefined (reading 'Message')
+Error al encolar: sendMessageChatWoot is not defined

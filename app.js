@@ -18,6 +18,7 @@ const employeesAddonConfig = {
     temperature: 0,
     apiKey: process.env.OPENAI_API_KEY
 };
+
 const employeesAddon = init(employeesAddonConfig);
 
 employeesAddon.employees([
@@ -42,6 +43,8 @@ const main = async () => {
         }
     )
 
+
+    console.log(employeesAddonConfig)
     const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow])
     const adapterProvider = createProvider(BaileysProvider)

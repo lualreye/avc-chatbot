@@ -20,7 +20,7 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
             const currentState = ctxFn.state.getMyState();
             const body = ctx.body;
 
-            await chatwoot.create.Message({
+            await chatwoot.createMessage({
                 msg: body,
                 mode: 'incoming',
                 conversationId: currentState.conversation_id

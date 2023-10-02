@@ -13,16 +13,18 @@ module.exports = async (ctx, options) => {
         });
         console.log(contactSave)
         await options.state.update({
-          chat_wood_id: contactSave.payload.contact.id ?? checkIsSave[0].id,
+          chat_woot_id: contactSave.payload.contact.id ?? checkIsSave[0].id,
         });
       } else {
-        await options.state.update({ chat_wood_id: checkIsSave[0].id });
+        await options.state.update({ chat_woot_id: checkIsSave[0].id });
       }
       const currentState = options.state.getMyState();
   
       const filterConversation = await chatwoot.filterConversation({
         phone_number: ctx.from,
       });
+
+      console.log('filter conversation', filterConversation)
   
       await options.state.update({
         conversation_id: filterConversation.payload.length ? filterConversation.payload[0].id : 0,
@@ -33,7 +35,7 @@ module.exports = async (ctx, options) => {
       if (!filterConversation.payload.length) {
         const conversation = await chatwoot.createConversation({
           inbox_id: inboxId,
-          contact_id: currentState.chat_wood_id,
+          contact_id: currentState.chat_woot_id,
           phone_number: ctx.from,
         });
         

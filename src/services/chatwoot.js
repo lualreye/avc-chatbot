@@ -1,27 +1,20 @@
-class ChatWoot {
-  token = "";
-  config = { accounts: 1 };
-  api = ``;
+require('dotenv').config()
 
+class ChatWoot {
   constructor(_token = "", _api = "", _config = {}) {
     this.token = _token;
     this.api = _api;
-    this.config = { ...this.config, ..._config };
+    this.config = { accounts: 1, ..._config };
   }
 
-  buildHeader = () => {
+  buildHeader() {
     const header = new Headers();
     header.append("api_access_token", this.token);
     header.append("Content-Type", "application/json");
     return header;
-  };
+  }
 
-  /**
-   *
-   * @param dataIn
-   * @returns
-   */
-  getInbox = async () => {
+  async getInbox() {
     const requestOptions = {
       method: "GET",
       headers: this.buildHeader(),
@@ -33,45 +26,32 @@ class ChatWoot {
     );
     const data = await dataAPI.json();
     return data.payload;
-  };
+  }
 
-  /**
-   *
-   * @returns
-   */
-  searchByNumber = async (phone) => {
+  async searchByNumber(phone) {
     const requestOptions = {
       method: "GET",
       headers: this.buildHeader(),
     };
 
-    console.log('req options', requestOptions)
-
     const dataAPI = await fetch(
       `${this.api}/api/v1/accounts/${this.config.accounts}/contacts/search?include_contact_inboxes=false&page=1&sort=-last_activity_at&q=${phone}`,
       requestOptions
     );
-
-    console.log(dataAPI)
-    const data = dataAPI;
-    console.log(data.payload)
+    const data = await dataAPI.json();
     return data.payload;
-  };
+  }
 
-  /**
-   *
-   * @param dataIn
-   * @returns
-   */
-  createInbox = async (dataIn) => {
+  async createInbox(dataIn) {
     const payload = {
       name: "BOTWS",
       channel: {
         type: "api",
         webhook_url: "",
       },
+      ...dataIn,
     };
-    const raw = JSON.stringify({ ...payload, ...dataIn });
+    const raw = JSON.stringify(payload);
 
     const requestOptions = {
       method: "POST",
@@ -85,19 +65,15 @@ class ChatWoot {
     );
     const data = await dataAPI.json();
     return data;
-  };
+  }
 
-  /**
-   *
-   * @param dataIn
-   * @returns
-   */
-  createContact = async (dataIn) => {
+  async createContact(dataIn) {
     const payload = {
       phone_number: dataIn.phone_number,
       custom_attributes: { phone_number: dataIn.phone_number },
+      ...dataIn,
     };
-    const raw = JSON.stringify({ ...payload, ...dataIn });
+    const raw = JSON.stringify(payload);
 
     const requestOptions = {
       method: "POST",
@@ -111,13 +87,9 @@ class ChatWoot {
     );
     const data = await dataAPI.json();
     return data;
-  };
+  }
 
-  /**
-   *
-   * @returns
-   */
-  getConversations = async () => {
+  async getConversations() {
     const requestOptions = {
       method: "GET",
       headers: this.buildHeader(),
@@ -129,17 +101,14 @@ class ChatWoot {
     );
     const data = await dataAPI.json();
     return data.payload;
-  };
-  /**
-   *
-   * @param dataIn
-   * @returns
-   */
-  createConversation = async (dataIn) => {
+  }
+
+  async createConversation(dataIn) {
     const payload = {
       custom_attributes: { phone_number: dataIn.phone_number },
+      ...dataIn,
     };
-    const raw = JSON.stringify({ ...dataIn, ...payload });
+    const raw = JSON.stringify(payload);
 
     const requestOptions = {
       method: "POST",
@@ -153,46 +122,44 @@ class ChatWoot {
     );
     const data = await dataAPI.json();
     return data;
-  };
-  /**
-   *
-   * @param dataIn
-   * @returns
-   */
-  filterConversation = async (dataIn) => {
-    const payload = [
-      {
-        attribute_key: "phone_number",
-        attribute_model: "standard",
-        filter_operator: "equal_to",
-        values: [dataIn.phone_number],
-        custom_attribute_type: "",
-      },
-    ];
-    const raw = JSON.stringify({payload});
+  }
 
-    const requestOptions = {
-      method: "POST",
-      headers: this.buildHeader(),
-      body: raw,
-    };
+  async filterConversation(dataIn) {
+    try {
 
-    const dataAPI = await fetch(
-      `${this.api}/api/v1/accounts/${this.config.accounts}/conversations/filter`,
-      requestOptions
-    );
-    const data = await dataAPI.json();
-    return data;
-  };
+      const payload = [
+        {
+          attribute_key: "phone_number",
+          filter_operator: "equal_to",
+          values: [dataIn.phone_number],
+          attribute_model: "standard",
+          custom_attribute_type: ""
+        },
+      ];
 
-  /**
-   *
-   * @param msg
-   * @param mode
-   * @returns
-   */
-  createMessage = async (dataIn) => {
+      const raw = JSON.stringify({ payload });
+  
+      console.log('raw filter', raw)
+      const requestOptions = {
+        method: "POST",
+        headers: this.buildHeader(),
+        body: raw,
+      };
 
+      
+      const dataAPI = await fetch(
+        `${this.api}/api/v1/accounts/${this.config.accounts}/conversations/filter`,
+        requestOptions
+      );
+      console.log(dataAPI)
+      const data = await dataAPI.json();
+      return data;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async createMessage(dataIn) {
     const raw = JSON.stringify({
       content: dataIn.msg,
       message_type: dataIn.mode,
@@ -211,7 +178,7 @@ class ChatWoot {
     );
     const data = await dataAPI.json();
     return data;
-  };
+  }
 }
 
 module.exports = ChatWoot
