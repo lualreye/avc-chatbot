@@ -11,6 +11,7 @@ const mainFlow = require('./src/flows/main.flow');
 const subscriptionFlow = require('./src/flows/subscription.flow')
 const informationFlow = require('./src/flows/information.flow')
 const HttpServer = require('./src/http/http.class');
+const ChatWoot = require('./src/services/chatwoot')
 
 const employeesAddonConfig = {
     model: 'gpt-3.5-turbo-16k',
@@ -33,6 +34,14 @@ employeesAddon.employees([
 ])
 
 const main = async () => {
+    const chatwoot = new ChatWoot(
+        process.env.CHATWOOT_KEY,
+        process.env.CHATWOOT_URL,
+        {
+            accounts: 1
+        }
+    )
+
     const adapterDB = new MockAdapter()
     const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow])
     const adapterProvider = createProvider(BaileysProvider)
@@ -44,8 +53,13 @@ const main = async () => {
     }
 
     const configExtra = {
+        globalState: {
+            status: true,
+            inbox_id: 1
+        },
         extensions: {
-            employeesAddon
+            employeesAddon,
+            chatwoot
         }
     }
 
