@@ -60,10 +60,10 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
           conversationId: currentState.conversation_id
         })
 
-        ctxFn.fallBack(FALLBACK_MESSAGE)
+        await ctxFn.fallBack(FALLBACK_MESSAGE)
       }
 
-      ctxFn.state.update({
+      await ctxFn.state.update({
         user: text
       });
 
@@ -75,7 +75,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(REASON_MESSAGE)
+      await ctxFn.flowDynamic(REASON_MESSAGE)
     }
   )
   .addAction(
@@ -104,7 +104,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
           conversationId: currentState.conversation_id
         })
 
-        ctxFn.fallBack(FALLBACK_MESSAGE)
+        await ctxFn.fallBack(FALLBACK_MESSAGE)
       }
 
       ctxFn.state.update({
@@ -114,7 +114,6 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
   )
   .addAction(
     async (ctx, ctxFn) => {
-      console.log('se dispara el guardado')
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
       const currentDate = new Date()
@@ -132,13 +131,11 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         unsubscribeDate: formatDate(submitCurrentDate),
       }
 
-      console.log('request in sheets')
-
       await googleSheet.saveRequest(request);
 
-      const LAST_MESSAGE = '```Tu solicitud ha sido guardada existosamente, _por favor, guarda tú número de solicitud_```'
+      const LAST_MESSAGE = '```Tu solicitud ha sido guardada existosamente, por favor, guarda tú número de solicitud```'
 
-      ctxFn.flowDynamic(LAST_MESSAGE);
+      await   ctxFn.flowDynamic(LAST_MESSAGE);
 
       chatwoot.createMessage({
         msg: LAST_MESSAGE,
@@ -146,7 +143,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      const CODE_MESSAGE = `tú número de registro es: *${request.code}*` 
+      const CODE_MESSAGE = `${request.code}` 
       
       chatwoot.createMessage({
         msg: CODE_MESSAGE,
@@ -154,14 +151,14 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(CODE_MESSAGE)
+      await ctxFn.flowDynamic(CODE_MESSAGE)
 
       ctxFn.state.update({
         code: request.code
       });
 
-      ctxFn.gotoFlow(goodbye, ctxFn);
-    }
+      await ctxFn.gotoFlow(goodbye);
+    },
   )
 
 module.exports = subscriptionFlow;

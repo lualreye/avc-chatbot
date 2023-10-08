@@ -10,6 +10,8 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 const mainFlow = require('./src/flows/main.flow');
 const subscriptionFlow = require('./src/flows/subscription.flow')
 const informationFlow = require('./src/flows/information.flow')
+const { goodbye, tryAgain } = require('./src/flows/goodbye.flow')
+
 const HttpServer = require('./src/http/http.class');
 const ChatWoot = require('./src/services/chatwoot')
 
@@ -44,7 +46,7 @@ const main = async () => {
     )
 
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow])
+    const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow, goodbye, tryAgain ])
     const adapterProvider = createProvider(BaileysProvider)
 
     const configBot = {
