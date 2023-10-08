@@ -3,7 +3,6 @@ const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 const goodbye = addKeyword(EVENTS.ACTION)
   .addAction(
     async (ctx, ctxFn) => {
-      console.log('despido')
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
 

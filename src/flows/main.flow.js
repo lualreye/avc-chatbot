@@ -8,12 +8,15 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
     .addAction((_, { endFlow, globalState }) => {
         const currentGlobalState = globalState.getMyState();
         if (!currentGlobalState.status) {
+            console.log('end flow')
             return endFlow();
         }
+        console.log('comenzamos')
     })
     .addAction(chatwootMiddleware)
     .addAction(
         async (ctx, ctxFn) => {
+            console.log('working on redirection')
             const chatwoot = ctxFn.extensions.chatwoot;
             const currentState = ctxFn.state.getMyState();
             const body = ctx.body;
@@ -78,6 +81,8 @@ const mainFlow = addKeyword(EVENTS.WELCOME)
             }
 
             ctxFn.state.update({ idealEmployee })
+
+            console.log(idealEmployee.employee)
 
             plugin.gotoFlow(idealEmployee.employee, ctxFn)
         },

@@ -87,14 +87,12 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       const currentState = ctxFn.state.getMyState();
       const text = ctx.body;
 
-      console.log('me estoy ejecutando', text)
       chatwoot.createMessage({
         msg: text,
         mode: 'incoming',
         conversationId: currentState.conversation_id
       })
 
-      console.log(text)
 
       if (text.length < 4) {
 
@@ -116,11 +114,12 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
   )
   .addAction(
     async (ctx, ctxFn) => {
+      console.log('se dispara el guardado')
+      const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
-
       const currentDate = new Date()
-
       const submitCurrentDate = new Date(currentDate);
+
       submitCurrentDate.setDate(currentDate.getDate() + 30);
 
       const code = `N-${currentDate.getTime().toString()}`;
@@ -133,19 +132,11 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         unsubscribeDate: formatDate(submitCurrentDate),
       }
 
+      console.log('request in sheets')
+
       await googleSheet.saveRequest(request);
 
-      ctxFn.state.update({
-        code: request.code
-      });
-
-      chatwoot.createMessage({
-        msg: FALLBACK_MESSAGE,
-        mode: 'outgoing',
-        conversationId: currentState.conversation_id
-      })
-
-      const LAST_MESSAGE = '```Tu solicitud ha sido guardada existosamente```'
+      const LAST_MESSAGE = '```Tu solicitud ha sido guardada existosamente, _por favor, guarda tú número de solicitud_```'
 
       ctxFn.flowDynamic(LAST_MESSAGE);
 
@@ -155,17 +146,21 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      const SAVE_MESSAGE = '_Por favor, guarda tu número solicitud_'
-
-      ctxFn.flowDynamic(`tú número de registro es: *${currentState.code}*`)
-
+      const CODE_MESSAGE = `tú número de registro es: *${request.code}*` 
+      
       chatwoot.createMessage({
-        msg: `tú número de registro es: *${currentState.code}*`,
+        msg: CODE_MESSAGE,
         mode: 'outgoing',
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.gotoFlow(goodbye);
+      ctxFn.flowDynamic(CODE_MESSAGE)
+
+      ctxFn.state.update({
+        code: request.code
+      });
+
+      ctxFn.gotoFlow(goodbye, ctxFn);
     }
   )
 
