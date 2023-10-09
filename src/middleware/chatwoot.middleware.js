@@ -33,7 +33,8 @@ module.exports = async (ctx, options) => {
       });
       await options.state.update({ conversation_id: conversation.id });
     }
-      //Si tienes asignado agente no continua
+
+    //Si tienes asignado agente no continua
     if (filterConversation.payload.length && filterConversation.payload[0].meta) {
       const assignee = filterConversation.payload[0].meta?.assignee
       // if (assignee) return await options.endFlow()
