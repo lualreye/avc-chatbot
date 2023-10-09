@@ -6,6 +6,7 @@ const { tryAgain, goodbye } = require('../flows/goodbye.flow');
 const { isEmail } = require('../utils/emailValidator')
 const { formatDate } = require('../utils/formatDate.js')
 const GoogleSheetService = require('../services/gcpSheets');
+const mainFlow = require('./main.flow');
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
@@ -15,7 +16,8 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
 
-      const CANCELLATION_MESSAGE = 'Para proceder con la baja de suscripción, necesitamos: \n El Correo Electrónico que usaste en mercado Pago \n ó puede darnos tu nombre y apellido'
+      const CANCELLATION_MESSAGE = 'Para proceder con la baja de suscripción, necesitamos: \n El *Correo Electrónico* que usaste en mercado Pago ó \n Puede darnos tu *nombre y apellido*'
+      const BACK_MESSAGE = 'Para regresar al menú principal escribe *CANCELAR*'
 
       chatwoot.createMessage({
         msg: CANCELLATION_MESSAGE,
@@ -23,7 +25,14 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
+      chatwoot.createMessage({
+        msg: BACK_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
       ctxFn.flowDynamic(CANCELLATION_MESSAGE)
+      ctxFn.flowDynamic(BACK_MESSAGE)
     }
   )
   .addAction(
@@ -41,6 +50,19 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         mode: 'incoming',
         conversationId: currentState.conversation_id
       })
+
+      if (text.toLowerCase() === 'cancelar') {
+        const CANCELLATION_MESSAGE = 'Comencemos de nuevo, recuerda que estamos aquí para darte informción o darle de baja tu suscripción'
+
+        chatwoot.createMessage({
+          msg: CANCELLATION_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        ctxFn.flowDynamic(CANCELLATION_MESSAGE)
+        return ctxFn.endFlow();
+      }
 
       if (!isEmail(text) && !text.split(' ').length > 1) {
 
@@ -129,6 +151,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         code: code,
         requestDate: formatDate(currentDate),
         unsubscribeDate: formatDate(submitCurrentDate),
+        status: 'pendiente'
       }
 
       await googleSheet.saveRequest(request);

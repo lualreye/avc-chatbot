@@ -4,6 +4,7 @@ const { informationKeywords } = require("../utils/subscription.keywords");
 const { isCode } = require('../utils/codeValidator');
 const { tryAgain, goodbye } = require('../flows/goodbye.flow');
 const GoogleSheetService = require('../services/gcpSheets');
+const mainFlow = require("./main.flow");
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
@@ -12,7 +13,7 @@ const informationFlow = addKeyword(informationKeywords)
     async (ctx, ctxFn) => {
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
-      const INITIAL_INFO_MESSAGE = 'Puedes ayudarme con tú número solicitud'
+      const INITIAL_INFO_MESSAGE = 'Puedes ayudarme con tú número solicitud \n Sino cuéntas con un número de solicitud escribe *CANCELAR*'
 
       chatwoot.createMessage({
         msg: INITIAL_INFO_MESSAGE,
@@ -41,6 +42,19 @@ const informationFlow = addKeyword(informationKeywords)
         conversationId: currentState.conversation_id
       })
 
+      if (text.toLowerCase() === 'cancelar') {
+        const CANCELLATION_MESSAGE = 'Comencemos de nuevo, recuerda que estamos aquí para darte informción o darle de baja tu suscripción'
+
+        chatwoot.createMessage({
+          msg: CANCELLATION_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        ctxFn.flowDynamic(CANCELLATION_MESSAGE)
+        return ctxFn.endFlow();
+      }
+
       if (!isCode(text)) {
 
         if (fallBackCode > 2) {
@@ -66,7 +80,11 @@ const informationFlow = addKeyword(informationKeywords)
         const data = await googleSheet.getRequest(text)
         if (data !== undefined) {
 
-          const DATA_MESSAGE = `Tus datos son los siguientes: \n codigo: ${data.code} \n usuario: ${data.user} \n Faltan ${data.timeLeft} día(s)`
+          const DATA_MESSAGE = `Tus datos son los siguientes: 
+          \n codigo: ${data.code} \n usuario: ${data.user} \n Faltan ${data.timeLeft} día(s) \n
+          estado: ${data.status}`
+
+          const INFO_MESSAGE = 'Recuerda que el proceso dura entre 12 y 30 días hábiles'
           
           chatwoot.createMessage({
             msg: DATA_MESSAGE,
@@ -74,7 +92,14 @@ const informationFlow = addKeyword(informationKeywords)
             conversationId: currentState.conversation_id
           })
 
+          chatwoot.createMessage({
+            msg: INFO_MESSAGE,
+            mode: 'outgoing',
+            conversationId: currentState.conversation_id
+          })
+
           await ctxFn.flowDynamic(DATA_MESSAGE);
+          await ctxFn.flowDynamic(INFO_MESSAGE);
           
           await ctxFn.gotoFlow(goodbye);
         } else {

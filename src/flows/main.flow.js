@@ -4,7 +4,7 @@ const subscriptionFlow = require('./subscription.flow')
 const informationFlow = require('./information.flow')
 const chatwootMiddleware = require('../middleware/chatwoot.middleware')
 
-const mainFlow = addKeyword('hola')
+const mainFlow = addKeyword([EVENTS.WELCOME, EVENTS.ACTION])
     .addAction((_, { endFlow, globalState }) => {
         const currentGlobalState = globalState.getMyState();
         if (!currentGlobalState.status) {
@@ -39,7 +39,7 @@ const mainFlow = addKeyword('hola')
             const chatwoot = ctxFn.extensions.chatwoot;
             const currentState = ctxFn.state.getMyState();
             const MESSAGE_OPTIONS = 
-                '¿Cuéntanos por qué nos escribes? \n 1. Información \n 2. Cancelar suscripción'
+                '¿Cuéntanos por qué nos escribes, \n deseas cancelar tu suscripción o \n requieres información de solicitud?'
             await chatwoot.createMessage({
                 msg: MESSAGE_OPTIONS,
                 mode: 'outgoing',
@@ -81,6 +81,7 @@ const mainFlow = addKeyword('hola')
 
             plugin.gotoFlow(idealEmployee.employee, ctxFn)
         },
+        [informationFlow, subscriptionFlow]
     )
 
 

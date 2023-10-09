@@ -41,7 +41,8 @@ class GoogleSheetService {
         .map((row) => ({
           code: row.get('codigo'),
           user: row.get('usuario'),
-          timeLeft: calculateDaysUntilDate(row.get('fecha_de_baja'))
+          timeLeft: calculateDaysUntilDate(row.get('fecha_de_baja')),
+          status: row.get('status')
         }));
 
       const rowData = rowDataArray.length > 0 ? rowDataArray[0] : null;
@@ -67,6 +68,7 @@ class GoogleSheetService {
       motivo: data.reason,
       fecha_solicitud: data.requestDate,
       fecha_de_baja: data.unsubscribeDate,
+      status: data.status
     });
     return order
 
