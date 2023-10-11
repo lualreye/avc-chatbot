@@ -1,26 +1,26 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '593995076954@s.whatsapp.net',
+    remoteJid: '5491131974050@s.whatsapp.net',
     fromMe: false,
-    id: '6F3FC84D34FC408681D77FC9EE3C6C25',
+    id: '17DCACA2FEB39237C48544B73359DA19',
     participant: undefined
   },
-  messageTimestamp: 1696882517,
-  pushName: 'Ohayo',
+  messageTimestamp: 1696991499,
+  pushName: 'Dave',
   broadcast: false,
   message: Message {
-    conversation: 'Hola',
+    conversation: 'Ok',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2
     }
   },
-  body: 'Hola',
-  from: '593995076954'
+  body: 'Ok',
+  from: '5491131974050'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_5152ff96-117b-4439-9ba8-b7fffff6eb8f',
-  keyword: 'key_e86574a6-6b5a-47c6-83d5-48fb82623fd9',
+  ref: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  keyword: 'key_d4a6e430-83a7-49cf-9f7a-0c1115a81ef6',
   answer: '__call_action__',
   options: {
     media: null,
@@ -33,11 +33,40 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'c217e5b5fcc967b6dfb4d901462054fd'
+  refSerialize: 'ad96f7ccc2ba991a1f05d4eb22d2a246'
+}
+Error al encolar (ID ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df): TypeError: Cannot read properties of undefined (reading 'conversation_id')
+    at Object.ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df (/Users/lualreye/chatbots/base-baileys-mongo/src/flows/subscription.flow.js:25:38)
+    at runContext (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1176:57)
+    at cbEveryCtx (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1190:19)
+    at resolveCbEveryCtx (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1143:61)
+    at Object.promiseInFunc (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1047:35)
+    at async /Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:520:35
+    at async Promise.allSettled (index 0)
+    at async Queue.processQueue (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:533:13)
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '86217430D5ED3F987030258B175B21AB',
+    participant: undefined
+  },
+  messageTimestamp: 1696991971,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Hola bot',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Hola bot',
+  from: '5491131974050'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_f4ec50f8-5db3-41b1-a71b-60cdca029764',
-  keyword: 'ans_5152ff96-117b-4439-9ba8-b7fffff6eb8f',
+  ref: 'ans_cba86b10-27b8-45c0-bb62-3b00f45c1f99',
+  keyword: 'key_e4e420a9-a95e-4c46-8722-d8ba67aaed57',
   answer: '__call_action__',
   options: {
     media: null,
@@ -50,11 +79,53 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '4c837fee0485ccf19e6d11dc78810ffb'
+  refSerialize: '9c3f8295e961a8dacf00fa622cfad772'
 }
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: 'ADF7A3753AB1DA24C8F9748C00B4511F',
+    participant: undefined
+  },
+  messageTimestamp: 1696992012,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'hola bot',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'hola bot',
+  from: '5491131974050'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '2F272C0366FDD7AA231ED73935B554AC',
+    participant: undefined
+  },
+  messageTimestamp: 1696992019,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Baja',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Baja',
+  from: '5491131974050'
+}
+Error al encolar (ID ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb): Queue cleared
+Error al encolar (ID ans_cba86b10-27b8-45c0-bb62-3b00f45c1f99): Queue cleared
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8915ef21-7b1f-4983-8a84-f641a8b3b5ac',
-  keyword: 'ans_f4ec50f8-5db3-41b1-a71b-60cdca029764',
+  ref: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  keyword: 'key_d4a6e430-83a7-49cf-9f7a-0c1115a81ef6',
   answer: '__call_action__',
   options: {
     media: null,
@@ -67,11 +138,20 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '5c9717ba6400d53e89d28ee27fa4d50e'
+  refSerialize: 'ad96f7ccc2ba991a1f05d4eb22d2a246'
 }
+Error al encolar (ID ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df): TypeError: Cannot read properties of undefined (reading 'conversation_id')
+    at Object.ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df (/Users/lualreye/chatbots/base-baileys-mongo/src/flows/subscription.flow.js:25:38)
+    at runContext (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1176:57)
+    at cbEveryCtx (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1190:19)
+    at resolveCbEveryCtx (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1143:61)
+    at Object.promiseInFunc (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:1047:35)
+    at async /Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:520:35
+    at async Promise.allSettled (index 0)
+    at async Queue.processQueue (/Users/lualreye/chatbots/base-baileys-mongo/node_modules/@bot-whatsapp/bot/lib/bundle.bot.cjs:533:13)
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_a25d0d28-28a7-49bd-ba9b-0ecbc5e15ff9',
-  keyword: 'ans_8915ef21-7b1f-4983-8a84-f641a8b3b5ac',
+  ref: 'ans_ce6a2e3e-488b-499b-8fcc-6c026d97b2ae',
+  keyword: 'ans_cba86b10-27b8-45c0-bb62-3b00f45c1f99',
   answer: '__call_action__',
   options: {
     media: null,
@@ -84,11 +164,11 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'b3296521d1d819b78f170761e09e8ad4'
+  refSerialize: '8b921542de85987de723c6541742052a'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e27a7882-60da-4cc9-b6ae-f3be4c4e5e96',
-  keyword: 'ans_a25d0d28-28a7-49bd-ba9b-0ecbc5e15ff9',
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
   answer: '__capture_only_intended__',
   options: {
     media: null,
@@ -101,5 +181,454 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '3df38f8736f9a0df5307dbc10070d459'
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_cba86b10-27b8-45c0-bb62-3b00f45c1f99',
+  keyword: 'key_e4e420a9-a95e-4c46-8722-d8ba67aaed57',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '9c3f8295e961a8dacf00fa622cfad772'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_9f71818e-b3d4-464f-8e74-47840b9b1a9d',
+  keyword: 'ans_ce6a2e3e-488b-499b-8fcc-6c026d97b2ae',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '5d4e272edfac28880ff6f7324b3c8598'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_3d5a4139-cbef-4761-96c5-c589911de529',
+  keyword: 'ans_9f71818e-b3d4-464f-8e74-47840b9b1a9d',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '9501de4ead57972c5c649d51bc90e3ef'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_4e123b17-42a9-4b20-bbd4-87017ad762f9',
+  keyword: 'ans_3d5a4139-cbef-4761-96c5-c589911de529',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '6a0f39005fe1dc8d83cdb02e33f57a0e'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: 'F48E4D0EB129C3EF4CEFFD932D4F71C5',
+    participant: undefined
+  },
+  messageTimestamp: 1696992041,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Como pido baja?',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Como pido baja?',
+  from: '5491131974050'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '7B1B187CA6110921B6CCAC83FE4BCFC4',
+    participant: undefined
+  },
+  messageTimestamp: 1696992091,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Cuanto demora?',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Cuanto demora?',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_a800ae24-27ad-47cc-b6d3-196ff2f72d86',
+  keyword: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'c3f77a309aba55a107b324aecf54ea69'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '3480FBA668B2843C9B062AAAC41827CC',
+    participant: undefined
+  },
+  messageTimestamp: 1696992122,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Y me reintegran el dinero?',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Y me reintegran el dinero?',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  keyword: 'key_d4a6e430-83a7-49cf-9f7a-0c1115a81ef6',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'ad96f7ccc2ba991a1f05d4eb22d2a246'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '54EE9D00AFF5DD254C113987442D1E19',
+    participant: undefined
+  },
+  messageTimestamp: 1696992138,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Y me reintegran el dinero?',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Y me reintegran el dinero?',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_a800ae24-27ad-47cc-b6d3-196ff2f72d86',
+  keyword: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'c3f77a309aba55a107b324aecf54ea69'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: 'ECFEA50F961DE6BAA702D45A68CDA6BA',
+    participant: undefined
+  },
+  messageTimestamp: 1696992152,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Ok',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Ok',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  keyword: 'key_d4a6e430-83a7-49cf-9f7a-0c1115a81ef6',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'ad96f7ccc2ba991a1f05d4eb22d2a246'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '97531D9A948EDFA45FC99D5DCBC97305',
+    participant: undefined
+  },
+  messageTimestamp: 1696992173,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: 'Mañana lo vemos',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Mañana lo vemos',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_a800ae24-27ad-47cc-b6d3-196ff2f72d86',
+  keyword: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'c3f77a309aba55a107b324aecf54ea69'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: 'A392B5F8E03B8EC39E79A7E8AC90CEA2',
+    participant: undefined
+  },
+  messageTimestamp: 1696992203,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: '3 numeros diferentes?',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '3 numeros diferentes?',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  keyword: 'key_d4a6e430-83a7-49cf-9f7a-0c1115a81ef6',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'ad96f7ccc2ba991a1f05d4eb22d2a246'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  keyword: 'ans_6427d31a-6ab3-45d8-80a2-e35bb7f5e9df',
+  answer: '__capture_only_intended__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'd9688b8bd76e007f6c38d3510ac136b5'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5491131974050@s.whatsapp.net',
+    fromMe: false,
+    id: '97DAC2A4BAAF88C696D819234313E0BA',
+    participant: undefined
+  },
+  messageTimestamp: 1696992209,
+  pushName: 'Dave',
+  broadcast: false,
+  message: Message {
+    conversation: '??',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: '??',
+  from: '5491131974050'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_a800ae24-27ad-47cc-b6d3-196ff2f72d86',
+  keyword: 'ans_5e5495dc-0d2e-4c75-adaa-a4772d505bfb',
+  answer: '__call_action__',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'c3f77a309aba55a107b324aecf54ea69'
 }

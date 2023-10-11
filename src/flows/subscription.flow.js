@@ -6,7 +6,6 @@ const { tryAgain, goodbye } = require('../flows/goodbye.flow');
 const { isEmail } = require('../utils/emailValidator')
 const { formatDate } = require('../utils/formatDate.js')
 const GoogleSheetService = require('../services/gcpSheets');
-const mainFlow = require('./main.flow');
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
@@ -88,50 +87,6 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       await ctxFn.state.update({
         user: text
       });
-
-      const REASON_MESSAGE = 'Nos indicas el motivo por el que cancelas la suscripción 😢'
-
-      chatwoot.createMessage({
-        msg: REASON_MESSAGE,
-        mode: 'outgoing',
-        conversationId: currentState.conversation_id
-      })
-
-      await ctxFn.flowDynamic(REASON_MESSAGE)
-    }
-  )
-  .addAction(
-    {
-      capture: true
-    },
-    async (ctx, ctxFn) => {
-      const chatwoot = ctxFn.extensions.chatwoot;
-      const currentState = ctxFn.state.getMyState();
-      const text = ctx.body;
-
-      chatwoot.createMessage({
-        msg: text,
-        mode: 'incoming',
-        conversationId: currentState.conversation_id
-      })
-
-
-      if (text.length < 4) {
-
-        const FALLBACK_MESSAGE = 'Esto no parece un motivo'
-
-        chatwoot.createMessage({
-          msg: FALLBACK_MESSAGE,
-          mode: 'outgoing',
-          conversationId: currentState.conversation_id
-        })
-
-        await ctxFn.fallBack(FALLBACK_MESSAGE)
-      }
-
-      ctxFn.state.update({
-        reason: text
-      })
     }
   )
   .addAction(
@@ -147,7 +102,6 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
 
       const request = {
         user: currentState.user,
-        reason: currentState.reason,
         code: code,
         requestDate: formatDate(currentDate),
         unsubscribeDate: formatDate(submitCurrentDate),
@@ -175,6 +129,16 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       })
 
       await ctxFn.flowDynamic(CODE_MESSAGE)
+
+      const REMINDER_MESSAGE = `*Recuerda:*  La solicitud será procesada en un período de 12 a 30 días.` 
+      
+      chatwoot.createMessage({
+        msg: REMINDER_MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+
+      await ctxFn.flowDynamic(REMINDER_MESSAGE)
 
       ctxFn.state.update({
         code: request.code

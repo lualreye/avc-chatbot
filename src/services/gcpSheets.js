@@ -65,7 +65,6 @@ class GoogleSheetService {
     const order = await sheet.addRow({
       codigo: data.code,
       usuario: data.user,
-      motivo: data.reason,
       fecha_solicitud: data.requestDate,
       fecha_de_baja: data.unsubscribeDate,
       status: data.status

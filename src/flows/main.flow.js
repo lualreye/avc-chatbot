@@ -4,7 +4,8 @@ const subscriptionFlow = require('./subscription.flow')
 const informationFlow = require('./information.flow')
 const chatwootMiddleware = require('../middleware/chatwoot.middleware')
 
-const mainFlow = addKeyword([EVENTS.WELCOME, EVENTS.ACTION])
+// const mainFlow = addKeyword([EVENTS.WELCOME, EVENTS.ACTION])
+const mainFlow = addKeyword('hola bot')
     .addAction((_, { endFlow, globalState }) => {
         const currentGlobalState = globalState.getMyState();
         if (!currentGlobalState.status) {

@@ -84,7 +84,7 @@ const informationFlow = addKeyword(informationKeywords)
           \n codigo: ${data.code} \n usuario: ${data.user} \n Faltan ${data.timeLeft} día(s) \n
           estado: ${data.status}`
 
-          const INFO_MESSAGE = 'Recuerda que el proceso dura entre 12 y 30 días hábiles'
+          const INFO_MESSAGE = 'Recuerda que el proceso dura entre 12 y 30 días.'
           
           chatwoot.createMessage({
             msg: DATA_MESSAGE,
