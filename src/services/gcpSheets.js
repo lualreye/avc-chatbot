@@ -1,5 +1,6 @@
 const { JWT } = require("google-auth-library");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
+
 const { calculateDaysUntilDate } = require("../utils/calculateUntilDate");
 
 const SCOPES = [
@@ -42,7 +43,6 @@ class GoogleSheetService {
           code: row.get('codigo'),
           user: row.get('usuario'),
           timeLeft: calculateDaysUntilDate(row.get('fecha_de_baja')),
-          status: row.get('status')
         }));
 
       const rowData = rowDataArray.length > 0 ? rowDataArray[0] : null;
@@ -67,11 +67,50 @@ class GoogleSheetService {
       usuario: data.user,
       fecha_solicitud: data.requestDate,
       fecha_de_baja: data.unsubscribeDate,
-      status: data.status
     });
     return order
 
   };
+
+  /**
+   * Guardar pedido
+   * @param {*} data
+   */
+  claimRequest = async (data = {}) => {
+    await this.doc.loadInfo();
+    const sheet = this.doc.sheetsByIndex[2]; // the third sheet
+
+    const order = await sheet.addRow({
+      codigo: data.code,
+      nombre: data.name,
+      telefono: data.phone_number,
+    });
+    return order
+  };
+
+  /**
+   * Consultar email
+   * @param email as string
+   */
+  isRequestCreated = async (email) => {
+    await this.doc.loadInfo();
+    const sheet = this.doc.sheetsByIndex[0];
+    const rows = await sheet.getRows();
+
+    const rowDataArray = rows
+      .filter((row) => row.get('usuario') === email)
+      .map((row) => ({
+        code: row.get('codigo'),
+        user: row.get('usuario'),
+        timeLeft: calculateDaysUntilDate(row.get('fecha_de_baja')),
+      }));
+
+    const rowData = rowDataArray.length > 0 ? rowDataArray[0] : null;
+
+    return rowData;
+  }
+
+
 }
 
 module.exports = GoogleSheetService ;

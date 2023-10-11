@@ -2,10 +2,11 @@ const { EVENTS, addKeyword } = require('@bot-whatsapp/bot');
 
 const subscriptionFlow = require('./subscription.flow')
 const informationFlow = require('./information.flow')
-const chatwootMiddleware = require('../middleware/chatwoot.middleware')
+const claimFlow = require('./claim.flow');
 
-// const mainFlow = addKeyword([EVENTS.WELCOME, EVENTS.ACTION])
-const mainFlow = addKeyword('hola bot')
+const chatwootMiddleware = require('../middleware/chatwoot.middleware');
+
+const mainFlow = addKeyword([ EVENTS.WELCOME, EVENTS.ACTION ])
     .addAction((_, { endFlow, globalState }) => {
         const currentGlobalState = globalState.getMyState();
         if (!currentGlobalState.status) {
@@ -17,30 +18,8 @@ const mainFlow = addKeyword('hola bot')
         async (ctx, ctxFn) => {
             const chatwoot = ctxFn.extensions.chatwoot;
             const currentState = ctxFn.state.getMyState();
-            const body = ctx.body;
-
-            await chatwoot.createMessage({
-                msg: body,
-                mode: 'incoming',
-                conversationId: currentState.conversation_id
-            })
-
-            const MESSAGE = 'Hola bienvenido al asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
-            await chatwoot.createMessage({
-                msg: MESSAGE,
-                mode: 'outgoing',
-                conversationId: currentState.conversation_id
-            })
-
-            await ctxFn.flowDynamic(MESSAGE)
-        }
-    )
-    .addAction(
-        async (ctx, ctxFn) => {
-            const chatwoot = ctxFn.extensions.chatwoot;
-            const currentState = ctxFn.state.getMyState();
             const MESSAGE_OPTIONS = 
-                '¿Cuéntanos por qué nos escribes, \n deseas cancelar tu suscripción o \n requieres información de solicitud?'
+                '¿Cuéntanos por qué nos escribes, \n deseas cancelar tu suscripción o \n requieres información?'
             await chatwoot.createMessage({
                 msg: MESSAGE_OPTIONS,
                 mode: 'outgoing',
@@ -67,7 +46,10 @@ const mainFlow = addKeyword('hola bot')
             })
 
             if (!idealEmployee?.employee) {
-                const MESSAGE = 'Lo siento no he podido entenderte \n ¿Qué deseas hacer? \n 1. Información \n 2. Cancelar suscripción'
+                const MESSAGE = `Lo siento no he podido entenderte
+                    \n ¿Qué deseas hacer?
+                    \n 1. Información \n 2. Cancelar suscripción
+                    \n 3. Cobro inesperado`
 
                 await chatwoot.createMessage({
                     msg: MESSAGE,
@@ -82,7 +64,7 @@ const mainFlow = addKeyword('hola bot')
 
             plugin.gotoFlow(idealEmployee.employee, ctxFn)
         },
-        [informationFlow, subscriptionFlow]
+        [informationFlow, subscriptionFlow, claimFlow]
     )
 
 

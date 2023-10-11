@@ -8,12 +8,14 @@ const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
 const mainFlow = require('./src/flows/main.flow');
-const subscriptionFlow = require('./src/flows/subscription.flow')
+const claimFlow = require('./src/flows/claim.flow');
+const newRequest = require('./src/flows/newRequest.flow');
 const informationFlow = require('./src/flows/information.flow')
 const { goodbye, tryAgain } = require('./src/flows/goodbye.flow')
+const subscriptionFlow = require('./src/flows/subscription.flow')
 
 const HttpServer = require('./src/http/http.class');
-const ChatWoot = require('./src/services/chatwoot')
+const ChatWoot = require('./src/services/chatwoot');
 
 const employeesAddonConfig = {
     model: 'gpt-3.5-turbo-16k',
@@ -34,6 +36,11 @@ employeesAddon.employees([
         description: fs.readFileSync(path.join(__dirname, './src/prompts/01_INFORMATION_ASISTANT.txt'), 'utf8'),
         flow: informationFlow
     },
+    {
+        name: 'EMPLEADO_REEMBOLSO',
+        description: fs.readFileSync(path.join(__dirname, './src/prompts/03_CLAIM_INFORMATION.txt'), 'utf8'),
+        flow: claimFlow
+    },
 ])
 
 const main = async () => {
@@ -46,7 +53,15 @@ const main = async () => {
     )
 
     const adapterDB = new MockAdapter()
-    const adapterFlow = createFlow([mainFlow, subscriptionFlow, informationFlow, goodbye, tryAgain ])
+    const adapterFlow = createFlow([
+        mainFlow,
+        subscriptionFlow,
+        informationFlow,
+        goodbye,
+        tryAgain,
+        newRequest,
+        claimFlow
+    ])
     const adapterProvider = createProvider(BaileysProvider)
 
     const configBot = {

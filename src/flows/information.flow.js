@@ -1,14 +1,14 @@
-const { addKeyword } = require("@bot-whatsapp/bot");
+const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
-const { informationKeywords } = require("../utils/subscription.keywords");
+const newRequest = require("./newRequest.flow");
+const { tryAgain } = require('../flows/goodbye.flow');
+
 const { isCode } = require('../utils/codeValidator');
-const { tryAgain, goodbye } = require('../flows/goodbye.flow');
 const GoogleSheetService = require('../services/gcpSheets');
-const mainFlow = require("./main.flow");
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
-const informationFlow = addKeyword(informationKeywords)
+const informationFlow = addKeyword(EVENTS.ACTION)
   .addAction(
     async (ctx, ctxFn) => {
       const chatwoot = ctxFn.extensions.chatwoot;
@@ -58,7 +58,7 @@ const informationFlow = addKeyword(informationKeywords)
       if (!isCode(text)) {
 
         if (fallBackCode > 2) {
-          return ctxFn.gotoFlow(tryAgain)
+          await ctxFn.gotoFlow(tryAgain)
         }
 
         ctxFn.state.update({
@@ -101,7 +101,7 @@ const informationFlow = addKeyword(informationKeywords)
           await ctxFn.flowDynamic(DATA_MESSAGE);
           await ctxFn.flowDynamic(INFO_MESSAGE);
           
-          await ctxFn.gotoFlow(goodbye);
+          await ctxFn.gotoFlow(newRequest);
         } else {
 
           const NO_CODE_MESSAGE = 'Parece que este codigo no existe 😵‍💫'

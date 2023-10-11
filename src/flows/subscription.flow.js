@@ -1,15 +1,16 @@
 require('dotenv').config();
-const { addKeyword } = require("@bot-whatsapp/bot");
+const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
-const { subscriptionKeywords } = require("../utils/subscription.keywords");
-const { tryAgain, goodbye } = require('../flows/goodbye.flow');
-const { isEmail } = require('../utils/emailValidator')
-const { formatDate } = require('../utils/formatDate.js')
+const newRequest = require('./newRequest.flow')
+const { tryAgain } = require('../flows/goodbye.flow');
+
+const { isEmail } = require('../utils/emailValidator');
+const { formatDate } = require('../utils/formatDate.js');
 const GoogleSheetService = require('../services/gcpSheets');
 
 const googleSheet = new GoogleSheetService(process.env.PRIVATE_KEY_ID);
 
-const subscriptionFlow = addKeyword(subscriptionKeywords)
+const subscriptionFlow = addKeyword(EVENTS.ACTION)
   .addAction(
     async (ctx, ctxFn) => {
       const chatwoot = ctxFn.extensions.chatwoot;
@@ -66,7 +67,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
       if (!isEmail(text) && !text.split(' ').length > 1) {
 
         if (fallBackUser > 2) {
-          return ctxFn.gotoFlow(tryAgain)
+          await ctxFn.gotoFlow(tryAgain)
         }
 
         ctxFn.state.update({
@@ -81,7 +82,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
           conversationId: currentState.conversation_id
         })
 
-        await ctxFn.fallBack(FALLBACK_MESSAGE)
+        ctxFn.fallBack(FALLBACK_MESSAGE)
       }
 
       await ctxFn.state.update({
@@ -93,10 +94,42 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
     async (ctx, ctxFn) => {
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
+
+      const data = await googleSheet.isRequestCreated(currentState.user);
+
+      if (data) {
+        const DATA_MESSAGE = `Tus datos son los siguientes: 
+          \n codigo: ${data.code} \n usuario: ${data.user} \n Faltan ${data.timeLeft} día(s)`
+
+        const INFO_MESSAGE = 'Recuerda que el proceso dura entre 12 y 30 días.'
+        
+        chatwoot.createMessage({
+          msg: DATA_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        chatwoot.createMessage({
+          msg: INFO_MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+
+        await ctxFn.flowDynamic(DATA_MESSAGE);
+        await ctxFn.flowDynamic(INFO_MESSAGE);
+        
+        await ctxFn.gotoFlow(newRequest);
+      }
+    }
+  )
+  .addAction(
+    async (ctx, ctxFn) => {
+      const chatwoot = ctxFn.extensions.chatwoot;
+      const currentState = ctxFn.state.getMyState();
       const currentDate = new Date()
       const submitCurrentDate = new Date(currentDate);
 
-      submitCurrentDate.setDate(currentDate.getDate() + 30);
+      submitCurrentDate.setDate(currentDate.getDate() + 12);
 
       const code = `N-${currentDate.getTime().toString()}`;
 
@@ -105,14 +138,13 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         code: code,
         requestDate: formatDate(currentDate),
         unsubscribeDate: formatDate(submitCurrentDate),
-        status: 'pendiente'
       }
 
       await googleSheet.saveRequest(request);
 
-      const LAST_MESSAGE = '```Tu solicitud ha sido guardada existosamente, por favor, guarda tú número de solicitud```'
+      const LAST_MESSAGE = '```Tu solicitud fue registrada existosamente, guarda tú código de solicitud```'
 
-      await   ctxFn.flowDynamic(LAST_MESSAGE);
+      ctxFn.flowDynamic(LAST_MESSAGE);
 
       chatwoot.createMessage({
         msg: LAST_MESSAGE,
@@ -120,7 +152,7 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      const CODE_MESSAGE = `${request.code}` 
+      const CODE_MESSAGE = `${request.code}`
       
       chatwoot.createMessage({
         msg: CODE_MESSAGE,
@@ -128,9 +160,9 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      await ctxFn.flowDynamic(CODE_MESSAGE)
+      ctxFn.flowDynamic(CODE_MESSAGE)
 
-      const REMINDER_MESSAGE = `*Recuerda:*  La solicitud será procesada en un período de 12 a 30 días.` 
+      const REMINDER_MESSAGE = `*Recuerda:*  La solicitud será procesada en un período de 12 a 30 días, te llegará un email con el aviso con confirmando la baja y no ser volverá a hacer cobro.` 
       
       chatwoot.createMessage({
         msg: REMINDER_MESSAGE,
@@ -138,13 +170,13 @@ const subscriptionFlow = addKeyword(subscriptionKeywords)
         conversationId: currentState.conversation_id
       })
 
-      await ctxFn.flowDynamic(REMINDER_MESSAGE)
+      ctxFn.flowDynamic(REMINDER_MESSAGE)
 
       ctxFn.state.update({
         code: request.code
       });
 
-      await ctxFn.gotoFlow(goodbye);
+      await ctxFn.gotoFlow(newRequest);
     },
   )
 
