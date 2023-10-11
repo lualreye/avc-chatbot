@@ -1,7 +1,7 @@
 const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
-const { goodbye } = require('./goodbye.flow');
 const mainFlow = require('./main.flow');
+const { goodbye } = require('./goodbye.flow');
 
 const newRequest = addKeyword(EVENTS.ACTION)
   .addAction(
@@ -17,7 +17,8 @@ const newRequest = addKeyword(EVENTS.ACTION)
         conversationId: currentState.conversation_id
       })
 
-      await ctxFn.flowDynamic(QUESTION_MESSAGE)
+      ctxFn.flowDynamic(QUESTION_MESSAGE)
+      console.log('terminamos primer mensaje')
     }
   )
   .addAction(
@@ -25,15 +26,19 @@ const newRequest = addKeyword(EVENTS.ACTION)
       capture: true
     },
     async (ctx, ctxFn) => {
+      console.log('comenzamos segundo mensaje')
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
       const text = ctx.body.toLowerCase();
 
+      console.log('request?', text)
+      
       if (text === 'si') {
         await ctxFn.gotoFlow(mainFlow)
       }
 
       if (text === 'no') {
+        console.log('goodbye')
         await ctxFn.gotoFlow(goodbye);
       }
 
@@ -48,8 +53,7 @@ const newRequest = addKeyword(EVENTS.ACTION)
 
         ctxFn.fallBack(FALLBACK_MESSAGE)
       }
-
-    }
+    },
   )
 
 

@@ -2,7 +2,16 @@ const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 
 const mainFlow = require("./main.flow");
 
-const welcomeFlow = addKeyword(EVENTS.ACTION)
+const chatwootMiddleware = require('../middleware/chatwoot.middleware');
+
+const welcomeFlow = addKeyword(EVENTS.WELCOME)
+  .addAction((_, { endFlow, globalState }) => {
+    const currentGlobalState = globalState.getMyState();
+    if (!currentGlobalState.status) {
+        return endFlow();
+    }
+  })
+  .addAction(chatwootMiddleware)
   .addAction(
     async (ctx, ctxFn) => {
       const chatwoot = ctxFn.extensions.chatwoot;
@@ -31,7 +40,7 @@ const welcomeFlow = addKeyword(EVENTS.ACTION)
           conversationId: currentState.conversation_id
       })
 
-      const MESSAGE = 'Este es el asistente virtual de AVC, ¿Cómo puedo ayudarte el día de hoy?'
+      const MESSAGE = 'Este es el asistente virtual de AVC'
       await chatwoot.createMessage({
           msg: MESSAGE,
           mode: 'outgoing',

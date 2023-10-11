@@ -6,6 +6,8 @@ const goodbye = addKeyword(EVENTS.ACTION)
       const chatwoot = ctxFn.extensions.chatwoot;
       const currentState = ctxFn.state.getMyState();
 
+      console.log('nos despedimos')
+
       const BYE_MESSAGE = 'Si te puedo ayudar en algo más no dudes de escribirme'
 
       chatwoot.createMessage({

@@ -2,10 +2,10 @@ require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 
-const { createBot, createProvider, createFlow } = require('@bot-whatsapp/bot')
 const { init } = require('bot-ws-plugin-openai');
-const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
+const BaileysProvider = require('@bot-whatsapp/provider/baileys')
+const { createBot, createProvider, createFlow } = require('@bot-whatsapp/bot')
 
 const mainFlow = require('./src/flows/main.flow');
 const claimFlow = require('./src/flows/claim.flow');
@@ -16,6 +16,7 @@ const subscriptionFlow = require('./src/flows/subscription.flow')
 
 const HttpServer = require('./src/http/http.class');
 const ChatWoot = require('./src/services/chatwoot');
+const welcomeFlow = require('./src/flows/welcome.flow');
 
 const employeesAddonConfig = {
     model: 'gpt-3.5-turbo-16k',
@@ -60,7 +61,8 @@ const main = async () => {
         goodbye,
         tryAgain,
         newRequest,
-        claimFlow
+        claimFlow,
+        welcomeFlow
     ])
     const adapterProvider = createProvider(BaileysProvider)
 

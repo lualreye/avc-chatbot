@@ -1,19 +1,12 @@
 const { EVENTS, addKeyword } = require('@bot-whatsapp/bot');
 
-const subscriptionFlow = require('./subscription.flow')
-const informationFlow = require('./information.flow')
 const claimFlow = require('./claim.flow');
+const newRequest = require('./newRequest.flow');
+const informationFlow = require('./information.flow');
+const subscriptionFlow = require('./subscription.flow');
+const { goodbye, tryAgain } = require('./goodbye.flow');
 
-const chatwootMiddleware = require('../middleware/chatwoot.middleware');
-
-const mainFlow = addKeyword([ EVENTS.WELCOME, EVENTS.ACTION ])
-    .addAction((_, { endFlow, globalState }) => {
-        const currentGlobalState = globalState.getMyState();
-        if (!currentGlobalState.status) {
-            return endFlow();
-        }
-    })
-    .addAction(chatwootMiddleware)
+const mainFlow = addKeyword([ EVENTS.ACTION ])
     .addAction(
         async (ctx, ctxFn) => {
             const chatwoot = ctxFn.extensions.chatwoot;
@@ -64,7 +57,7 @@ const mainFlow = addKeyword([ EVENTS.WELCOME, EVENTS.ACTION ])
 
             plugin.gotoFlow(idealEmployee.employee, ctxFn)
         },
-        [informationFlow, subscriptionFlow, claimFlow]
+        [informationFlow, subscriptionFlow, claimFlow, newRequest, goodbye, tryAgain ]
     )
 
 
