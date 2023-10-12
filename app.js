@@ -9,6 +9,7 @@ const { createBot, createProvider, createFlow } = require('@bot-whatsapp/bot')
 
 const mainFlow = require('./src/flows/main.flow');
 const claimFlow = require('./src/flows/claim.flow');
+const refundFlow = require('./src/flows/refund.flow');
 const newRequest = require('./src/flows/newRequest.flow');
 const informationFlow = require('./src/flows/information.flow')
 const { goodbye, tryAgain } = require('./src/flows/goodbye.flow')
@@ -38,9 +39,14 @@ employeesAddon.employees([
         flow: informationFlow
     },
     {
-        name: 'EMPLEADO_REEMBOLSO',
+        name: 'EMPLEADO_RECLAMO',
         description: fs.readFileSync(path.join(__dirname, './src/prompts/03_CLAIM_INFORMATION.txt'), 'utf8'),
         flow: claimFlow
+    },
+    {
+        name: 'EMPLEADO_REEMBOLSO_REINTEGRACION',
+        description: fs.readFileSync(path.join(__dirname, './src/prompts/04_REFUND.txt'), 'utf8'),
+        flow: refundFlow
     },
 ])
 
@@ -62,7 +68,8 @@ const main = async () => {
         tryAgain,
         newRequest,
         claimFlow,
-        welcomeFlow
+        welcomeFlow,
+        refundFlow
     ])
     const adapterProvider = createProvider(BaileysProvider)
 

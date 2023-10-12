@@ -89,6 +89,22 @@ class GoogleSheetService {
   };
 
   /**
+   * Guardar pedido
+   * @param {*} data
+   */
+  refundRequest = async (data = {}) => {
+    await this.doc.loadInfo();
+    const sheet = this.doc.sheetsByIndex[3]; // the third sheet
+
+    const order = await sheet.addRow({
+      codigo: data.code,
+      nombre: data.name,
+      telefono: data.phone_number,
+    });
+    return order
+  };
+
+  /**
    * Consultar email
    * @param email as string
    */

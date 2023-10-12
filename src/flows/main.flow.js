@@ -1,6 +1,7 @@
 const { EVENTS, addKeyword } = require('@bot-whatsapp/bot');
 
 const claimFlow = require('./claim.flow');
+const refundFlow = rqeuire('./refund.flow.js')
 const newRequest = require('./newRequest.flow');
 const informationFlow = require('./information.flow');
 const subscriptionFlow = require('./subscription.flow');
@@ -57,7 +58,7 @@ const mainFlow = addKeyword([ EVENTS.ACTION ])
 
             plugin.gotoFlow(idealEmployee.employee, ctxFn)
         },
-        [informationFlow, subscriptionFlow, claimFlow, newRequest, goodbye, tryAgain ]
+        [informationFlow, subscriptionFlow, claimFlow, newRequest, goodbye, tryAgain, refundFlow]
     )
 
 
