@@ -138,6 +138,7 @@ const subscriptionFlow = addKeyword(EVENTS.ACTION)
         code: code,
         requestDate: formatDate(currentDate),
         unsubscribeDate: formatDate(submitCurrentDate),
+        phone_number: ctx.from
       }
 
       await googleSheet.saveRequest(request);

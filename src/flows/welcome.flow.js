@@ -3,6 +3,7 @@ const { addKeyword, EVENTS } = require("@bot-whatsapp/bot");
 const mainFlow = require("./main.flow");
 
 const chatwootMiddleware = require('../middleware/chatwoot.middleware');
+const hasRequestedMiddleware = require("../middleware/hasRequested.middleware");
 
 const welcomeFlow = addKeyword(EVENTS.WELCOME)
   .addAction((_, { endFlow, globalState }) => {
@@ -12,6 +13,7 @@ const welcomeFlow = addKeyword(EVENTS.WELCOME)
     }
   })
   .addAction(chatwootMiddleware)
+  .addAction(hasRequestedMiddleware)
   .addAction(
     async (ctx, ctxFn) => {
       const chatwoot = ctxFn.extensions.chatwoot;

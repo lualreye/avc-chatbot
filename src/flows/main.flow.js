@@ -1,7 +1,7 @@
 const { EVENTS, addKeyword } = require('@bot-whatsapp/bot');
 
 const claimFlow = require('./claim.flow');
-const refundFlow = rqeuire('./refund.flow.js')
+const refundFlow = require('./refund.flow.js')
 const newRequest = require('./newRequest.flow');
 const informationFlow = require('./information.flow');
 const subscriptionFlow = require('./subscription.flow');
@@ -41,9 +41,10 @@ const mainFlow = addKeyword([ EVENTS.ACTION ])
 
             if (!idealEmployee?.employee) {
                 const MESSAGE = `Lo siento no he podido entenderte
-                    \n ¿Qué deseas hacer?
-                    \n 1. Información \n 2. Cancelar suscripción
-                    \n 3. Cobro inesperado`
+                    \n ¿Podemos hablar de: ?
+                    \n Cancelar suscripción
+                    \n Aumento de suscripción
+                    \n Reintegro`
 
                 await chatwoot.createMessage({
                     msg: MESSAGE,

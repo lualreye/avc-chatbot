@@ -67,6 +67,7 @@ class GoogleSheetService {
       usuario: data.user,
       fecha_solicitud: data.requestDate,
       fecha_de_baja: data.unsubscribeDate,
+      telefono: data.phone_number
     });
     return order
 
@@ -124,6 +125,53 @@ class GoogleSheetService {
     const rowData = rowDataArray.length > 0 ? rowDataArray[0] : null;
 
     return rowData;
+  }
+
+  /**
+   * Consultar email
+   * @param phone_number as string
+   */
+  hasRequested = async (phone_number) => {
+    try {
+      await this.doc.loadInfo();
+      const sheet = this.doc.sheetsByIndex[0];
+      const rows = await sheet.getRows();
+  
+      const rowDataArray = rows
+        .filter((row) => row.get('telefono') === phone_number)
+        .map((row) => ({
+          code: row.get('codigo'),
+          user: row.get('usuario'),
+          timeLeft: calculateDaysUntilDate(row.get('fecha_de_baja')),
+        }));
+  
+      const refundSheet = this.doc.sheetsByIndex[3];
+      const refundRows = await refundSheet.getRows();
+  
+      const secondRowDataArray = refundRows
+        .filter((row) => row.get('telefono') === phone_number)
+        .map((row) => ({
+          code: row.get('codigo'),
+          user: row.get('nombre'),
+        }));
+  
+      const subscription = rowDataArray.length > 0 ? rowDataArray[0] : null;
+      const refund = secondRowDataArray.length > 0 ? secondRowDataArray[0] : null;
+  
+      const requests = [];
+  
+      if (subscription) {
+        requests.push(subscription)
+      }
+  
+      if (refund) {
+        requests.push(refund)
+      }
+  
+      return requests;
+    } catch (error) {
+      console.log(error)
+    }
   }
 
 
