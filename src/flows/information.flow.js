@@ -15,13 +15,13 @@ const informationFlow = addKeyword(EVENTS.ACTION)
       const currentState = ctxFn.state.getMyState();
       const INITIAL_INFO_MESSAGE = 'Puedes ayudarme con tú número solicitud \n Sino cuéntas con un número de solicitud escribe *CANCELAR*'
 
-      chatwoot.createMessage({
+      await chatwoot.createMessage({
         msg: INITIAL_INFO_MESSAGE,
         mode: 'outgoing',
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(INITIAL_INFO_MESSAGE)
+      await ctxFn.flowDynamic(INITIAL_INFO_MESSAGE)
     }
   )
   .addAction(
@@ -36,7 +36,7 @@ const informationFlow = addKeyword(EVENTS.ACTION)
 
       const FALLBACK_MESSAGE = 'Esto no parece un código de solicitud 🧐'
 
-      chatwoot.createMessage({
+      await chatwoot.createMessage({
         msg: text,
         mode: 'incoming',
         conversationId: currentState.conversation_id
@@ -45,13 +45,13 @@ const informationFlow = addKeyword(EVENTS.ACTION)
       if (text.toLowerCase() === 'cancelar') {
         const CANCELLATION_MESSAGE = 'Comencemos de nuevo, recuerda que estamos aquí para darte informción o darle de baja tu suscripción'
 
-        chatwoot.createMessage({
+        await chatwoot.createMessage({
           msg: CANCELLATION_MESSAGE,
           mode: 'outgoing',
           conversationId: currentState.conversation_id
         })
 
-        ctxFn.flowDynamic(CANCELLATION_MESSAGE)
+        await ctxFn.flowDynamic(CANCELLATION_MESSAGE)
         return ctxFn.endFlow();
       }
 
@@ -65,7 +65,7 @@ const informationFlow = addKeyword(EVENTS.ACTION)
           fallBackCode: fallBackCode + 1
         });
 
-        chatwoot.createMessage({
+        await chatwoot.createMessage({
           msg: FALLBACK_MESSAGE,
           mode: 'outgoing',
           conversationId: currentState.conversation_id
@@ -86,33 +86,33 @@ const informationFlow = addKeyword(EVENTS.ACTION)
 
           const INFO_MESSAGE = 'Recuerda que el proceso dura entre 12 y 30 días.'
           
-          chatwoot.createMessage({
+          await chatwoot.createMessage({
             msg: DATA_MESSAGE,
             mode: 'outgoing',
             conversationId: currentState.conversation_id
           })
 
-          chatwoot.createMessage({
+          await chatwoot.createMessage({
             msg: INFO_MESSAGE,
             mode: 'outgoing',
             conversationId: currentState.conversation_id
           })
 
-          await ctxFn.flowDynamic(DATA_MESSAGE);
-          await ctxFn.flowDynamic(INFO_MESSAGE);
+          await await ctxFn.flowDynamic(DATA_MESSAGE);
+          await await ctxFn.flowDynamic(INFO_MESSAGE);
           
           await ctxFn.gotoFlow(newRequest);
         } else {
 
           const NO_CODE_MESSAGE = 'Parece que este codigo no existe 😵‍💫'
   
-          chatwoot.createMessage({
+          await chatwoot.createMessage({
             msg: NO_CODE_MESSAGE,
             mode: 'outgoing',
             conversationId: currentState.conversation_id
           })
   
-          await ctxFn.flowDynamic(NO_CODE_MESSAGE);
+          await await ctxFn.flowDynamic(NO_CODE_MESSAGE);
           await ctxFn.gotoFlow(tryAgain)
         }
 

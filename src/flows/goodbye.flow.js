@@ -10,13 +10,13 @@ const goodbye = addKeyword(EVENTS.ACTION)
 
       const BYE_MESSAGE = 'Si te puedo ayudar en algo más no dudes de escribirme'
 
-      chatwoot.createMessage({
+      await chatwoot.createMessage({
         msg: BYE_MESSAGE,
         mode: 'outgoing',
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(BYE_MESSAGE)
+      await ctxFn.flowDynamic(BYE_MESSAGE)
 
       ctxFn.endFlow()
     }
@@ -31,13 +31,13 @@ const tryAgain = addKeyword(EVENTS.ACTION)
 
       const TRY_AGAIN_MESSAGE = 'Recuerda que estoy aquí para ayudarte con información y cancelación de suscripción'
 
-      chatwoot.createMessage({
+      await chatwoot.createMessage({
         msg: TRY_AGAIN_MESSAGE,
         mode: 'outgoing',
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(TRY_AGAIN_MESSAGE)
+      await ctxFn.flowDynamic(TRY_AGAIN_MESSAGE)
 
       ctxFn.endFlow()
     }

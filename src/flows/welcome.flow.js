@@ -9,7 +9,7 @@ const welcomeFlow = addKeyword(EVENTS.WELCOME)
   .addAction((_, { endFlow, globalState }) => {
     const currentGlobalState = globalState.getMyState();
     if (!currentGlobalState.status) {
-        return endFlow();
+      return endFlow();
     }
   })
   .addAction(chatwootMiddleware)

@@ -160,14 +160,9 @@ class GoogleSheetService {
   
       const requests = [];
   
-      if (subscription) {
-        requests.push(subscription)
-      }
-  
-      if (refund) {
-        requests.push(refund)
-      }
-  
+      requests.push(subscription)
+      requests.push(refund)
+
       return requests;
     } catch (error) {
       console.log(error)

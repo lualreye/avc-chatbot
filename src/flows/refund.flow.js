@@ -23,13 +23,13 @@ const refundFlow = addKeyword(EVENTS.ACTION)
 
       const code = `N-${currentDate.getTime().toString()}`;
 
-      chatwoot.createMessage({
+      await chatwoot.createMessage({
         msg: REASON_MESSAGE,
         mode: 'outgoing',
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(REASON_MESSAGE)
+      await ctxFn.flowDynamic(REASON_MESSAGE)
 
       const request = {
         code: code,

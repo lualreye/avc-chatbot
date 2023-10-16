@@ -11,13 +11,13 @@ const newRequest = addKeyword(EVENTS.ACTION)
       
       const QUESTION_MESSAGE = `¿Hay algo más en lo que te pueda ayudar?` 
       
-      chatwoot.createMessage({
+      await chatwoot.createMessage({
         msg: QUESTION_MESSAGE,
         mode: 'outgoing',
         conversationId: currentState.conversation_id
       })
 
-      ctxFn.flowDynamic(QUESTION_MESSAGE)
+      await ctxFn.flowDynamic(QUESTION_MESSAGE)
       console.log('terminamos primer mensaje')
     }
   )
@@ -45,7 +45,7 @@ const newRequest = addKeyword(EVENTS.ACTION)
       if (text !== 'si' && text !== 'no') {
         const FALLBACK_MESSAGE = 'No te he entendido, me puedes repetir con un si o no';
 
-        chatwoot.createMessage({
+        await chatwoot.createMessage({
           msg: FALLBACK_MESSAGE,
           mode: 'outgoing',
           conversationId: currentState.conversation_id

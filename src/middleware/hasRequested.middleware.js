@@ -11,26 +11,27 @@ module.exports = async (ctx, ctxFn) => {
     const currentState = ctxFn.state.getMyState();
   
     const requests = await googleSheetService.hasRequested(phone_number);
-  
-    for (let i = 0; i < requests.length; i++) {
-      if ('fecha_de_baja' in requests[i]) {
-        const MESSAGE = '*RECUERDA* que hiciste tu solicitud de baja y el proceso toma entre 12 y 30 días'
-        chatwoot.createMessage({
-          msg: MESSAGE,
-          mode: 'outgoing',
-          conversationId: currentState.conversation_id
-        })
-        ctxFn.flowDynamic(MESSAGE)
-      } else {
-        const MESSAGE = '*RECUERDA* que hiciste tu solicitud de reintegro y está en proceso tu solicitud'
-        chatwoot.createMessage({
-          msg: MESSAGE,
-          mode: 'outgoing',
-          conversationId: currentState.conversation_id
-        })
-        ctxFn.flowDynamic(MESSAGE)
-      }
+
+    if (requests[0]) {
+      const MESSAGE = '*RECUERDA* que hiciste tu solicitud de baja y el proceso toma entre 12 y 30 días'
+      await chatwoot.createMessage({
+        msg: MESSAGE,
+        mode: 'outgoing',
+        conversationId: currentState.conversation_id
+      })
+      await ctxFn.flowDynamic(MESSAGE)
     }
+    
+    if (requests[1]) {
+      const MESSAGE = '*RECUERDA* que hiciste tu solicitud de reintegro y está en proceso tu solicitud'
+      await chatwoot.createMessage({
+          msg: MESSAGE,
+          mode: 'outgoing',
+          conversationId: currentState.conversation_id
+        })
+      await ctxFn.flowDynamic(MESSAGE)
+    }
+
   } catch (error) {
     console.log(error)
   }
